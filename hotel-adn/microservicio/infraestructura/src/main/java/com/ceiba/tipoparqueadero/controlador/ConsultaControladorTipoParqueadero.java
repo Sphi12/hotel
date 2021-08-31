@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tipohabitacion")
+@RequestMapping("/tipoparqueadero")
 @Api(tags={"Controlador consulta tipohabitacion"})
 public class ConsultaControladorTipoParqueadero {
 

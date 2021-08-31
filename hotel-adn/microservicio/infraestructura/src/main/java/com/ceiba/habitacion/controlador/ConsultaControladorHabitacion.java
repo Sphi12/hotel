@@ -15,18 +15,18 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/usuarios")
-@Api(tags={"Controlador consulta usuario"})
+@RequestMapping("/habitaciones")
+@Api(tags={"Controlador consulta habitaciones"})
 public class ConsultaControladorHabitacion {
 
     private final ManejadorListarHabitaciones manejadorListarHabitaciones;
 
-    public ConsultaControladorHabitacion(ManejadorListarHabitaciones manejadorListarUsuarios) {
-        this.manejadorListarHabitaciones = manejadorListarUsuarios;
+    public ConsultaControladorHabitacion(ManejadorListarHabitaciones manejadorListarHabitaciones) {
+        this.manejadorListarHabitaciones = manejadorListarHabitaciones;
     }
 
     @GetMapping
-    @ApiOperation("Listar Usuarios")
+    @ApiOperation("Listar habitaciones")
     public List<DtoHabitacion> listar() {
         return this.manejadorListarHabitaciones.ejecutar();
     }
