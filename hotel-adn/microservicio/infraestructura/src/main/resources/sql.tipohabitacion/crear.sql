@@ -1,0 +1,1 @@
+insert into tipoHabitacion (nombre, descripcion,precioSemana,precioFinSemana,capacidadPersonas,numeroCamas,descripcionCamas) values (:nombre, :descripcion, :precioSemana, :precioFinSemana, :capacidadPersonas, :numeroCamas, :descripcionCamas)

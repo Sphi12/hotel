@@ -1,0 +1,1 @@
+select count(1) from habitacion where id <> :id and tipo = :tipo

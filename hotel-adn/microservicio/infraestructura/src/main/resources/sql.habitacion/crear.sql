@@ -1,0 +1,1 @@
+insert into habitacion (tipo, disponible) values (:tipo, :disponible)
