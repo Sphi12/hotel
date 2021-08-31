@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DtoTipoReserva {
+public class DtoTipoParqueadero {
 
     private Long id;
     private String nombre;

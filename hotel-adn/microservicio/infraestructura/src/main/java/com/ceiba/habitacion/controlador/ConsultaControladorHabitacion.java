@@ -14,11 +14,11 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/usuarios")
 @Api(tags={"Controlador consulta usuario"})
-public class ConsultaControladorUsuario {
+public class ConsultaControladorHabitacion {
 
     private final ManejadorListarUsuarios manejadorListarUsuarios;
 
-    public ConsultaControladorUsuario(ManejadorListarUsuarios manejadorListarUsuarios) {
+    public ConsultaControladorHabitacion(ManejadorListarUsuarios manejadorListarUsuarios) {
         this.manejadorListarUsuarios = manejadorListarUsuarios;
     }
 

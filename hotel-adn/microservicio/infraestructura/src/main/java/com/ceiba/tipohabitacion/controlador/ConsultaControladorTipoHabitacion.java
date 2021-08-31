@@ -1,6 +1,9 @@
 package com.ceiba.usuario.controlador;
 
 import java.util.List;
+
+import com.ceiba.tipohabitacion.consulta.ManejadorListarTipoHabitacion;
+import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
 import com.ceiba.usuario.consulta.ManejadorListarUsuarios;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,20 +15,20 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/usuarios")
-@Api(tags={"Controlador consulta usuario"})
+@RequestMapping("/tipohabitacion")
+@Api(tags={"Controlador consulta tipohabitacion"})
 public class ConsultaControladorTipoHabitacion {
 
-    private final ManejadorListarUsuarios manejadorListarUsuarios;
+    private final ManejadorListarTipoHabitacion manejadorListarTipoHabitacion;
 
-    public ConsultaControladorTipoHabitacion(ManejadorListarUsuarios manejadorListarUsuarios) {
-        this.manejadorListarUsuarios = manejadorListarUsuarios;
+    public ConsultaControladorTipoHabitacion(ManejadorListarTipoHabitacion manejadorListarTipoHabitacion) {
+        this.manejadorListarTipoHabitacion = manejadorListarTipoHabitacion;
     }
 
     @GetMapping
-    @ApiOperation("Listar Usuarios")
-    public List<DtoUsuario> listar() {
-        return this.manejadorListarUsuarios.ejecutar();
+    @ApiOperation("Listar tipo habitacion")
+    public List<DtoTipoHabitacion> listar() {
+        return this.manejadorListarTipoHabitacion.ejecutar();
     }
 
 }

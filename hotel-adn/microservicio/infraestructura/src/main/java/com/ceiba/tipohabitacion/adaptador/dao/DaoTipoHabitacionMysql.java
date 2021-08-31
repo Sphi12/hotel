@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
 import com.ceiba.tipohabitacion.puerto.dao.DaoTipoHabitacion;
-import com.ceiba.usuario.adaptador.dao.MapeoTipoHabitacion;
 import com.ceiba.usuario.puerto.dao.DaoUsuario;
 
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ public class DaoTipoHabitacionMysql implements DaoTipoHabitacion {
     }
 
     @Override
-    public List<DaoTipoHabitacion> listar() {
+    public List<DtoTipoHabitacion> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoTipoHabitacion());
     }
 }

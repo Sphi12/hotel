@@ -7,7 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.usuario.comando.ComandoHabitacion;
+import com.ceiba.habitacion.controlador.ComandoControladorHabitacion;
+import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.servicio.testdatabuilder.ComandoUsuarioTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +34,7 @@ public class ComandoControladorUsuarioTest {
     @Test
     public void crear() throws Exception{
         // arrange
-        ComandoHabitacion usuario = new ComandoUsuarioTestDataBuilder().build();
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
 
         // act - assert
         mocMvc.perform(post("/usuarios")
@@ -47,7 +48,7 @@ public class ComandoControladorUsuarioTest {
     public void actualizar() throws Exception{
         // arrange
         Long id = 2L;
-        ComandoHabitacion usuario = new ComandoUsuarioTestDataBuilder().build();
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
 
         // act - assert
         mocMvc.perform(put("/usuarios/{id}",id)
