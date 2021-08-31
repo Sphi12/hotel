@@ -24,6 +24,6 @@ public class DaoUsuarioMysql implements DaoUsuario {
 
     @Override
     public List<DtoUsuario> listar() {
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new com.ceiba.usuario.adaptador.dao.MapeoTipoParqueadero());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new com.ceiba.usuario.adaptador.dao.MapeoUsuario());
     }
 }

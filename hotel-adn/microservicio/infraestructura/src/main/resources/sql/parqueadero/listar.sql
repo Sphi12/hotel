@@ -1,0 +1,2 @@
+select id,idTipoParqueadero,disponible
+from parqueadero

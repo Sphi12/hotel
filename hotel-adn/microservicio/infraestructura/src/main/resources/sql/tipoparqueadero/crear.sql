@@ -1,0 +1,1 @@
+insert into tipoParqueadero (nombre, descripcion,precio) values (:nombre, :descripcion, :precio)

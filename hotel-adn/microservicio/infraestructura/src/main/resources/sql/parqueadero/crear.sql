@@ -1,0 +1,1 @@
+insert into parqueadero (idTipoParqueadero, disponible) values (:idTipoParqueadero, :disponible)

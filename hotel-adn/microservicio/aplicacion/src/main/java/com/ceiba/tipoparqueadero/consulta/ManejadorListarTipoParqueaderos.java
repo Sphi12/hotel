@@ -2,6 +2,7 @@ package com.ceiba.tipoparqueadero.consulta;
 
 import java.util.List;
 
+import com.ceiba.tipoparqueadero.modelo.dto.DtoTipoParqueadero;
 import com.ceiba.tipoparqueadero.puerto.dao.DaoTipoParqueadero;
 
 import org.springframework.stereotype.Component;
@@ -16,5 +17,5 @@ public class ManejadorListarTipoParqueaderos {
         this.daoTipoParqueadero = daoTipoParqueadero;
     }
 
-    public List<DaoTipoParqueadero> ejecutar(){ return this.daoTipoParqueadero.listar(); }
+    public List<DtoTipoParqueadero> ejecutar(){ return this.daoTipoParqueadero.listar(); }
 }

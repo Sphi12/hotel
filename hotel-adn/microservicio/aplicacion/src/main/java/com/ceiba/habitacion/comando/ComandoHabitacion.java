@@ -14,4 +14,5 @@ public class ComandoHabitacion {
     private Long id;
     private Long tipo;
     private boolean disponible;
+    private String nombre;
 }

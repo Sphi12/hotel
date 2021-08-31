@@ -1,9 +1,9 @@
-package com.ceiba.usuario.controlador;
+package com.ceiba.reserva.controlador;
 import com.ceiba.ComandoRespuesta;
-import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorActualizarUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorEliminarUsuario;
+import com.ceiba.reserva.comando.ComandoReserva;
+import com.ceiba.reserva.comando.manejador.ManejadorActualizarReserva;
+import com.ceiba.reserva.comando.manejador.ManejadorCrearReserva;
+import com.ceiba.reserva.comando.manejador.ManejadorEliminarReserva;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,39 +11,39 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/reservas")
 @Api(tags = { "Controlador comando usuario"})
 public class ComandoControladorReserva {
 
-    private final ManejadorCrearUsuario manejadorCrearUsuario;
-	private final ManejadorEliminarUsuario manejadorEliminarUsuario;
-	private final ManejadorActualizarUsuario manejadorActualizarUsuario;
+    private final ManejadorCrearReserva manejadorCrearReserva;
+	private final ManejadorEliminarReserva manejadorEliminarReserva;
+	private final ManejadorActualizarReserva manejadorActualizarReserva;
 
     @Autowired
-    public ComandoControladorReserva(ManejadorCrearUsuario manejadorCrearUsuario,
-									 ManejadorEliminarUsuario manejadorEliminarUsuario,
-									 ManejadorActualizarUsuario manejadorActualizarUsuario) {
-        this.manejadorCrearUsuario = manejadorCrearUsuario;
-		this.manejadorEliminarUsuario = manejadorEliminarUsuario;
-		this.manejadorActualizarUsuario = manejadorActualizarUsuario;
+    public ComandoControladorReserva(ManejadorCrearReserva manejadorCrearReserva,
+									 ManejadorEliminarReserva manejadorEliminarReserva,
+									 ManejadorActualizarReserva manejadorActualizarReserva) {
+        this.manejadorCrearReserva = manejadorCrearReserva;
+		this.manejadorEliminarReserva = manejadorEliminarReserva;
+		this.manejadorActualizarReserva = manejadorActualizarReserva;
     }
 
     @PostMapping
     @ApiOperation("Crear Usuario")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoUsuario comandoUsuario) {
-        return manejadorCrearUsuario.ejecutar(comandoUsuario);
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoReserva comandoReserva) {
+        return manejadorCrearReserva.ejecutar(comandoReserva);
     }
 
     @DeleteMapping(value="/{id}")
 	@ApiOperation("Eliminar Usuario")
 	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarUsuario.ejecutar(id);
+		manejadorEliminarReserva.ejecutar(id);
 	}
 
 	@PutMapping(value="/{id}")
 	@ApiOperation("Actualizar Usuario")
-	public void actualizar(@RequestBody ComandoUsuario comandoUsuario, @PathVariable Long id) {
-		comandoUsuario.setId(id);
-		manejadorActualizarUsuario.ejecutar(comandoUsuario);
+	public void actualizar(@RequestBody ComandoReserva comandoReserva, @PathVariable Long id) {
+		comandoReserva.setId(id);
+		manejadorActualizarReserva.ejecutar(comandoReserva);
 	}
 }

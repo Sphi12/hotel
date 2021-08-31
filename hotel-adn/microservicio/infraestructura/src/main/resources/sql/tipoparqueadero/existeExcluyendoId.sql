@@ -1,0 +1,1 @@
+select count(1) from tipoParqueadero where id <> :id and nombre = :nombre

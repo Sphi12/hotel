@@ -9,19 +9,19 @@ public class ServicioCrearHabitacion {
 
     private static final String EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA = "El usuario ya existe en el sistema";
 
-    private final RepositorioHabitacion repositorioUsuario;
+    private final RepositorioHabitacion repositorioHabitacion;
 
     public ServicioCrearHabitacion(RepositorioHabitacion repositorioUsuario) {
-        this.repositorioUsuario = repositorioUsuario;
+        this.repositorioHabitacion = repositorioUsuario;
     }
 
-    public Long ejecutar(Habitacion usuario) {
-        validarExistenciaPrevia(usuario);
-        return this.repositorioUsuario.crear(usuario);
+    public Long ejecutar(Habitacion habitacion) {
+        validarExistenciaPrevia(habitacion);
+        return this.repositorioHabitacion.crear(habitacion);
     }
 
-    private void validarExistenciaPrevia(Habitacion usuario) {
-        boolean existe = this.repositorioUsuario.existe(usuario.getNombre());
+    private void validarExistenciaPrevia(Habitacion habitacion) {
+        boolean existe = this.repositorioHabitacion.existe(habitacion.getNombre());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA);
         }
