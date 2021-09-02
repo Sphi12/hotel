@@ -12,6 +12,7 @@ public class UsuarioTestDataBuilder {
     private LocalDate fechaCreacion;
 
     public UsuarioTestDataBuilder() {
+        id = 2L;
         nombreUsuario = "1234";
         clave = "1234";
         fechaCreacion = LocalDate.now();
