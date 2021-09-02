@@ -3,3 +3,4 @@ insert into tipohabitacion (id, nombre, descripcion, precioSemana, precioFinSema
 insert into tipoparqueadero (id, nombre,descripción,precio) values (1,'carro','carro',3000);
 insert into habitacion (id,tipo,disponible) values (1,1,1);
 insert into parqueadero(id,idTipoParqueadero, disponible) values (1,1,1);
+INSERT INTO RESERVA(ID_RESERVA, ID_HABITACION, ID_PARQUEADERO, ID_USUARIO, FECHA_RESERVA, FECHA_INGRESO, FECHA_SALIDA, PRECIO_TOTAL, CHECK_IN, CHECK_OUT) VALUES (1, 1, 1, 1, '2021-09-02 00:49:53', '2021-09-03', '2021-09-07', '451800', '0', '0');

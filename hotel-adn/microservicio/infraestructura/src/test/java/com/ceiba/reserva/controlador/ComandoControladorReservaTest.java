@@ -31,23 +31,11 @@ public class ComandoControladorReservaTest {
     @Autowired
     private MockMvc mocMvc;
 
-    @Test
-    public void crear() throws Exception{
-        // arrange
-        ComandoReservaInicial reservaInicial = new com.ceiba.resrva.servicio.testdatabuilder.ComandoReservaInicialTestDataBuilder().build();
-
-        // act - assert
-        mocMvc.perform(post("/reservas")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(reservaInicial)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
-    }
 
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 3L;
+        Long id = 1L;
         ComandoReserva usuario = new ComandoReservaTestDataBuilder().build();
 
         // act - assert
@@ -60,7 +48,7 @@ public class ComandoControladorReservaTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 4L;
+        Long id = 1L;
 
         // act - assert
         mocMvc.perform(delete("/reservas/{id}",id)

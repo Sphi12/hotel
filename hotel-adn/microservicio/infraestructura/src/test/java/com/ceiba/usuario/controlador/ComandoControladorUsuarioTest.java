@@ -30,20 +30,7 @@ public class ComandoControladorUsuarioTest {
     @Autowired
     private MockMvc mocMvc;
 
-    @Test
-    public void crear() throws Exception{
-        // arrange
-        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
 
-        System.out.println(usuario.getId());
-        usuario.setId(3L);
-        // act - assert
-        mocMvc.perform(post("/usuarios")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(usuario)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
-    }
 
     @Test
     public void actualizar() throws Exception{
