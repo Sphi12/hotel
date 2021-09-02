@@ -1,6 +1,9 @@
 package com.ceiba.habitacion.puerto.repositorio;
 
+import com.ceiba.habitacion.modelo.dto.DtoHabitacion;
 import com.ceiba.habitacion.modelo.entidad.Habitacion;
+
+import java.util.List;
 
 public interface RepositorioHabitacion {
     /**
@@ -24,10 +27,10 @@ public interface RepositorioHabitacion {
 
     /**
      * Permite validar si existe un habitacion con un nombre
-     * @param nombre
+     * @param id
      * @return si existe o no
      */
-    boolean existe(String nombre);
+    boolean existe(Long id);
 
     /**
      * Permite validar si existe un habitacion con un nombre excluyendo un id
@@ -36,4 +39,9 @@ public interface RepositorioHabitacion {
      */
     boolean existeExcluyendoId(Long id,Long tipo);
 
+    List<DtoHabitacion> listarPorTipo();
+
+    Long obtenerHabitacionDisponible(String tipo);
+
+    void actualizarDisponibilidad(Long id, String disponible);
 }

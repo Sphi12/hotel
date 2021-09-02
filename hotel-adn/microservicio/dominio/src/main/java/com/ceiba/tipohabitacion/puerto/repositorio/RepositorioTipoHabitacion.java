@@ -1,6 +1,9 @@
 package com.ceiba.tipohabitacion.puerto.repositorio;
 
+import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
 import com.ceiba.tipohabitacion.modelo.entidad.TipoHabitacion;
+
+import java.util.List;
 
 public interface RepositorioTipoHabitacion {
     /**
@@ -35,5 +38,7 @@ public interface RepositorioTipoHabitacion {
      * @return si existe o no
      */
     boolean existeExcluyendoId(Long id,String nombre);
+
+    List<DtoTipoHabitacion> obtenerPorId(String nombre);
 
 }

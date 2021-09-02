@@ -1,1 +1,1 @@
-select count(1) from tipoParqueadero where nombre = :nombre
+select count(1) from tipoParqueadero where id = :id

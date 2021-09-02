@@ -7,8 +7,8 @@ import java.util.List;
 public interface DaoHabitacion {
 
     /**
-     * Permite listar usuarios
-     * @return los usuarios
+     * Permite listar habitaciones
+     * @return las habitaciones
      */
     List<DtoHabitacion> listar();
 }

@@ -26,22 +26,21 @@ public class Reserva {
     private Long id;
     private Long idHabitacion;
     private Long idParqueadero;
-    private LocalDate fechaReserva;
+    private Long idUsuario;
+    private LocalDateTime fechaReserva;
     private LocalDate fechaIngreso;
     private LocalDate fechaSalida;
-    private Double precioDia;
     private Double precioTotal;
     private boolean checkIn;
     private boolean checkOut;
 
-    public Reserva(Long id,Long idHabitacion,Long idParqueadero,LocalDate fechaReserva,LocalDate fechaIngreso,
-                   LocalDate fechaSalida,Double precioDia, boolean checkIn, boolean checkOut) {
+    public Reserva(Long id,Long idHabitacion,Long idParqueadero, Long idUsuario, LocalDateTime fechaReserva,LocalDate fechaIngreso,
+                   LocalDate fechaSalida, Double precioTotal, boolean checkIn, boolean checkOut) {
         validarObligatorio(idHabitacion, SE_DEBE_INGRESAR_EL_ID_DE_LA_HABITACION);
         validarObligatorio(idParqueadero, SE_DEBE_INGRESAR_EL_ID_DEL_PARQUEADERO);
         validarObligatorio(fechaReserva, SE_DEBE_INGRESAR_LA_FECHA_DE_RESERVA);
         validarObligatorio(fechaIngreso, SE_DEBE_INGRESAR_LA_FECHA_DE_INGRESO);
         validarObligatorio(fechaSalida, SE_DEBE_INGRESAR_LA_FECHA_DE_SALIDA);
-        validarPositivo(precioDia,EL_PRECIO_DIA_DEBE_SER_UN_NUMERO);
 
 
         this.id = id;
@@ -50,18 +49,10 @@ public class Reserva {
         this.fechaReserva = fechaReserva;
         this.fechaIngreso = fechaIngreso;
         this.fechaSalida = fechaSalida;
-        this.precioDia = precioDia;
-        this.precioTotal= calcularPrecioTotal();
+        this.precioTotal= precioTotal;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
 
-    }
-
-
-    private Double calcularPrecioTotal(){
-
-
-        return null;
     }
 
 }

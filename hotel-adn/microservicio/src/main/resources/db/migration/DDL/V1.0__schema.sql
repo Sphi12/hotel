@@ -1,5 +1,5 @@
 create table IF NOT EXISTS usuario (
- id int(11) not null auto_increment,
+ id int(20) not null,
  nombre varchar(100) not null,
  clave varchar(45) not null,
  fecha_creacion DATE null,
@@ -9,7 +9,7 @@ ENGINE = InnoDB;
 create table IF NOT EXISTS habitacion (
  id int(11) not null auto_increment,
  tipo int(11) not null,
- disponible CHAR(0) not null,
+ disponible CHAR(1) not null,
  primary key (id)
 )ENGINE = InnoDB;
 
@@ -17,7 +17,7 @@ create table IF NOT EXISTS habitacion (
 create table IF NOT EXISTS parqueadero (
  id int(11) not null auto_increment,
  idTipoParqueadero int(11) not null,
- disponible CHAR(0) not null,
+ disponible CHAR(1) not null,
  primary key (id)
 )ENGINE = InnoDB;
 
@@ -41,4 +41,18 @@ create table IF NOT EXISTS tipoParqueadero (
  descripción varchar(100) not null,
  precio DOUBLE not null,
  primary key (id)
+)ENGINE = InnoDB;
+
+create table IF NOT EXISTS RESERVA (
+ ID_RESERVA int(11) not null auto_increment,
+ ID_HABITACION int(11) not null,
+ ID_PARQUEADERO int(11) ,
+ ID_USUARIO int(11) not null,
+ FECHA_RESERVA DATE NOT NULL,
+ FECHA_INGRESO DATE NOT NULL,
+ FECHA_SALIDA DATE NOT NULL,
+ PRECIO_TOTAL DOUBLE NOT NULL,
+ CHECK_IN CHAR(0),
+ CHECK_OUT CHAR(0),
+ primary key (ID_RESERVA)
 )ENGINE = InnoDB;

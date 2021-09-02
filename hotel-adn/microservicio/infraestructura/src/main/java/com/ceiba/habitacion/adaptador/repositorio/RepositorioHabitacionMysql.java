@@ -1,10 +1,14 @@
 package com.ceiba.habitacion.adaptador.repositorio;
+import com.ceiba.habitacion.modelo.dto.DtoHabitacion;
 import com.ceiba.habitacion.modelo.entidad.Habitacion;
 import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.usuario.adaptador.dao.MapeoHabitacion;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class RepositorioHabitacionMysql implements RepositorioHabitacion {
@@ -26,6 +30,15 @@ public class RepositorioHabitacionMysql implements RepositorioHabitacion {
     @SqlStatement(namespace="habitacion", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace = "habitacion", value = "listarPorTipo")
+    private static String sqlListarTipo;
+
+    @SqlStatement(namespace = "habitacion", value = "obtenerHabitacionDisponible")
+    private static String sqlObtenerHabitacionDisponible;
+
+    @SqlStatement(namespace = "habitacion", value = "actualizarDisponibilidad")
+    private static String sqlactualizarDisponibilidad;
+
     public RepositorioHabitacionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -44,9 +57,9 @@ public class RepositorioHabitacionMysql implements RepositorioHabitacion {
     }
 
     @Override
-    public boolean existe(String nombre) {
+    public boolean existe(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", nombre);
+        paramSource.addValue("id", id);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
     }
@@ -63,5 +76,25 @@ public class RepositorioHabitacionMysql implements RepositorioHabitacion {
         paramSource.addValue("tipo", tipo);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public List<DtoHabitacion> listarPorTipo() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarTipo, new MapeoHabitacion());
+    }
+
+    @Override
+    public Long obtenerHabitacionDisponible(String tipo) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("nombre", tipo);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHabitacionDisponible, paramSource, Long.class);
+    }
+
+    @Override
+    public void actualizarDisponibilidad(Long id, String disponible) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("disponible", disponible);
+        paramSource.addValue("id", id);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlactualizarDisponibilidad, paramSource);
     }
 }

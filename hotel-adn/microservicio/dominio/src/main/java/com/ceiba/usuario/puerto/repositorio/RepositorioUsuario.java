@@ -27,7 +27,7 @@ public interface RepositorioUsuario {
      * @param nombre
      * @return si existe o no
      */
-    boolean existe(String nombre);
+    boolean existe(Long id);
 
     /**
      * Permite validar si existe un usuario con un nombre excluyendo un id

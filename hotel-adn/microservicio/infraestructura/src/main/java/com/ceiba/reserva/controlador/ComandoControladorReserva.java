@@ -1,6 +1,7 @@
 package com.ceiba.reserva.controlador;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.reserva.comando.ComandoReserva;
+import com.ceiba.reserva.comando.ComandoReservaInicial;
 import com.ceiba.reserva.comando.manejador.ManejadorActualizarReserva;
 import com.ceiba.reserva.comando.manejador.ManejadorCrearReserva;
 import com.ceiba.reserva.comando.manejador.ManejadorEliminarReserva;
@@ -29,9 +30,9 @@ public class ComandoControladorReserva {
     }
 
     @PostMapping
-    @ApiOperation("Crear Usuario")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoReserva comandoReserva) {
-        return manejadorCrearReserva.ejecutar(comandoReserva);
+    @ApiOperation("Crear reserva")
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoReservaInicial comandoReservaInicial) {
+        return manejadorCrearReserva.ejecutar(comandoReservaInicial);
     }
 
     @DeleteMapping(value="/{id}")

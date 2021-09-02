@@ -2,10 +2,14 @@ package com.ceiba.tipoparqueadero.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.tipoparqueadero.adaptador.dao.MapeoTipoParqueadero;
+import com.ceiba.tipoparqueadero.modelo.dto.DtoTipoParqueadero;
 import com.ceiba.tipoparqueadero.modelo.entidad.TipoParqueadero;
 import com.ceiba.tipoparqueadero.puerto.repositorio.RepositorioTipoParqueadero;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class RepositorioTipoParqueaderoMysql implements RepositorioTipoParqueadero {
@@ -26,6 +30,9 @@ public class RepositorioTipoParqueaderoMysql implements RepositorioTipoParqueade
 
     @SqlStatement(namespace="tipoparqueadero", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
+
+    @SqlStatement(namespace = "tipoparqueadero", value = "obtenerParqueaderoId")
+    private static String sqlObtenerParqueaderoId;
 
     public RepositorioTipoParqueaderoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -64,5 +71,13 @@ public class RepositorioTipoParqueaderoMysql implements RepositorioTipoParqueade
         paramSource.addValue("nombre", nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public List<DtoTipoParqueadero> obtenerId(String nombre) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("nombre", nombre);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerParqueaderoId, paramSource,new MapeoTipoParqueadero());
     }
 }

@@ -12,10 +12,10 @@ public class FabricaReserva {
                 comandoReserva.getId(),
                 comandoReserva.getIdHabitacion(),
                 comandoReserva.getIdParqueadero(),
+                comandoReserva.getIdUsuario(),
                 comandoReserva.getFechaReserva(),
                 comandoReserva.getFechaIngreso(),
                 comandoReserva.getFechaSalida(),
-                comandoReserva.getPrecioDia(),
                 comandoReserva.isCheckIn(),
                 comandoReserva.isCheckOut()
         );

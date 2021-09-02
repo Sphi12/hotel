@@ -29,6 +29,9 @@ public class RepositorioParqueaderoMysql implements RepositorioParqueadero {
     @SqlStatement(namespace="parqueadero", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace = "parqueadero", value = "obtenerParqueaderoDisponible")
+    private static String sqlObtenerParqueaderoDisponible;
+
     public RepositorioParqueaderoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -66,5 +69,12 @@ public class RepositorioParqueaderoMysql implements RepositorioParqueadero {
         paramSource.addValue("id_tipo", idTipoParqueadero);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public Long obtenerParqueaderoDisponible(String tipo) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("nombre", tipo);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerParqueaderoDisponible, paramSource, Long.class);
     }
 }

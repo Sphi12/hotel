@@ -7,6 +7,7 @@ public interface RepositorioParqueadero {
 
     /**
      * Permite crear un parqueadero
+     *
      * @param parqueadero
      * @return el id generado
      */
@@ -14,18 +15,21 @@ public interface RepositorioParqueadero {
 
     /**
      * Permite actualizar un parqueadero
+     *
      * @param parqueadero
      */
     void actualizar(Parqueadero parqueadero);
 
     /**
      * Permite eliminar un parqueadero
+     *
      * @param id
      */
     void eliminar(Long id);
 
     /**
      * Permite validar si existe un parqueadero con un id
+     *
      * @param id
      * @return si existe o no
      */
@@ -33,8 +37,17 @@ public interface RepositorioParqueadero {
 
     /**
      * Permite validar si existe un parqueadero con un idTipoParqueadero excluyendo un id
+     *
      * @param idTipoParqueadero
      * @return si existe o no
      */
-    boolean existeExcluyendoId(Long id,Long idTipoParqueadero);
+    boolean existeExcluyendoId(Long id, Long idTipoParqueadero);
+
+    /**
+     * Permite obtener el id de un parqueadero disponible dado el tipo de parqueadero
+     *
+     * @param tipo
+     * @return
+     */
+    Long obtenerParqueaderoDisponible(String tipo);
 }

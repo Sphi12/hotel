@@ -13,19 +13,19 @@ public class MapeoReserva implements RowMapper<DtoReserva>, MapperResult {
     @Override
     public DtoReserva mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-        Long id = resultSet.getLong("id");
-        Long idHabitacion = resultSet.getLong("id_habitacion");
-        Long idParqueadero = resultSet.getLong("id_parqueadero");
-        LocalDate fechaReserva = extraerLocalDate(resultSet, "fecha_reserva");
-        LocalDate fechaIngreso = extraerLocalDate(resultSet, "fech_ingreso");
-        LocalDate fechaSalida = extraerLocalDate(resultSet, "fecha_salida");
-        Double precioDia = resultSet.getDouble("precio_dia");
-        Double precioTotal = resultSet.getDouble("precio_total");
-        boolean checkIn = resultSet.getBoolean("checkin");
-        boolean checkOut = resultSet.getBoolean("checkout");
+        Long id = resultSet.getLong("ID_RESERVA");
+        Long idHabitacion = resultSet.getLong("ID_HABITACION");
+        Long idParqueadero = resultSet.getLong("ID_PARQUEADERO");
+        Long idUsuario = resultSet.getLong("ID_USUARIO");
+        LocalDate fechaReserva = extraerLocalDate(resultSet, "FECHA_RESERVA");
+        LocalDate fechaIngreso = extraerLocalDate(resultSet, "FECHA_INGRESO");
+        LocalDate fechaSalida = extraerLocalDate(resultSet, "FECHA_SALIDA");
+        Double precioTotal = resultSet.getDouble("PRECIO_TOTAL");
+        boolean checkIn = resultSet.getBoolean("CHECK_IN");
+        boolean checkOut = resultSet.getBoolean("CHECK_OUT");
 
 
-        return new DtoReserva(id,idHabitacion,idParqueadero,fechaReserva,fechaIngreso,fechaSalida,precioDia,precioTotal,checkIn,checkOut);
+        return new DtoReserva(id,idHabitacion,idParqueadero,idUsuario,fechaReserva,fechaIngreso,fechaSalida,precioTotal,checkIn,checkOut);
     }
 
 }

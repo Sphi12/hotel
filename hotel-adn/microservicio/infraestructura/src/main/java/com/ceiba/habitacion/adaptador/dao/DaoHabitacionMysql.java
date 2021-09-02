@@ -7,6 +7,7 @@ import com.ceiba.habitacion.puerto.dao.DaoHabitacion;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.usuario.adaptador.dao.MapeoHabitacion;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 
@@ -15,7 +16,7 @@ public class DaoHabitacionMysql implements DaoHabitacion {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="habitacion", value="listar")
+    @SqlStatement(namespace = "habitacion", value = "listar")
     private static String sqlListar;
 
     public DaoHabitacionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -26,4 +27,6 @@ public class DaoHabitacionMysql implements DaoHabitacion {
     public List<DtoHabitacion> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoHabitacion());
     }
+
+
 }
