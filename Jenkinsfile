@@ -30,8 +30,8 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps {
         echo "------------>Unit Tests<------------"
-        sh 'gradle --b ./microservicio/build.gradle clean compileJava'
-        sh 'gradle --b ./microservicio/build.gradle test'
+        sh 'gradle --b ./hotel-adn/microservicio/build.gradle clean compileJava'
+        sh 'gradle --b ./hotel-adn/microservicio/build.gradle test'
       }
     }
 
@@ -48,7 +48,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh 'gradle --b ./microservicio/build.gradle build -x test'
+        sh 'gradle --b ./hotel-adn/microservicio/build.gradle build -x test'
       }
     }
   }
@@ -58,7 +58,7 @@ pipeline {
     }
     success {
       //This will run only if successful
-      junit 'microservicio/dominio/build/test-results/test/*.xml'
+      junit 'hotel-adn/microservicio/dominio/build/test-results/test/*.xml'
     }
     failure {
       //This will run only if failed
