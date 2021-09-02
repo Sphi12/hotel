@@ -132,7 +132,7 @@ public class ServicioCrearReserva {
         Double precioTotalHabitacion = 0.0;
         DtoTipoHabitacion tipoHabitacion = obtenertipoHabitacion(reservaInicial.getTipoHabitacion());
         LocalDate fechaAuxiliar = reservaInicial.getFechaIngreso();
-        while (!fechaAuxiliar.isAfter(reservaInicial.getFechaSalida())) {
+        while (fechaAuxiliar.isBefore(reservaInicial.getFechaSalida())) {
             if (fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
                     fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
                 precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();

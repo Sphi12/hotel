@@ -17,5 +17,5 @@ public class ComandoUsuario{
     private Long id;
     private String nombre;
     private String clave;
-    private LocalDate fecha;
+    private LocalDate fechaCreacion;
 }
