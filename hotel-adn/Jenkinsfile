@@ -23,7 +23,7 @@ pipeline {
         echo "------------>Checkout<------------"
         checkout([
         $class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[
-        credentialsId: 'Sphi12', url: 'https://github.com/Sphi12/hotel.git']]])
+        credentialsId: 'Sphi12', url: 'https://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@github.com/Sphi12/hotel.git']]])
       }
     }
 
