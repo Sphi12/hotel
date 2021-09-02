@@ -46,6 +46,7 @@ public class Reserva {
         this.id = id;
         this.idHabitacion = idHabitacion;
         this.idParqueadero = idParqueadero;
+        this.idUsuario = idUsuario;
         this.fechaReserva = fechaReserva;
         this.fechaIngreso = fechaIngreso;
         this.fechaSalida = fechaSalida;

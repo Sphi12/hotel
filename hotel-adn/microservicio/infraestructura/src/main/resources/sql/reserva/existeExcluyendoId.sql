@@ -1,1 +1,1 @@
-select count(1) from habitacion where id <> :id and tipo = :tipo
+select count(1) from RESERVA where id <> :ID_RESERVA and tipo = :tipo

@@ -14,7 +14,7 @@ public class MapeoTipoParqueadero implements RowMapper<DtoTipoParqueadero>, Mapp
 
         Long id = resultSet.getLong("id");
         String nombre = resultSet.getString("nombre");
-        String descripcion = resultSet.getString("descripcion");
+        String descripcion = resultSet.getString("descripción");
         Double precio = resultSet.getDouble("precio");
         return new DtoTipoParqueadero(id,nombre,descripcion,precio);
     }

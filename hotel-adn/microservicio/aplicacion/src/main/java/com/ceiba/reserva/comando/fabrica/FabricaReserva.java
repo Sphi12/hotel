@@ -16,6 +16,7 @@ public class FabricaReserva {
                 comandoReserva.getFechaReserva(),
                 comandoReserva.getFechaIngreso(),
                 comandoReserva.getFechaSalida(),
+                comandoReserva.getPrecioTotal(),
                 comandoReserva.isCheckIn(),
                 comandoReserva.isCheckOut()
         );

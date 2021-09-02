@@ -1,3 +1,3 @@
 update habitacion
-set disponible = :disponible,
+set disponible = :disponible
 where id = :id

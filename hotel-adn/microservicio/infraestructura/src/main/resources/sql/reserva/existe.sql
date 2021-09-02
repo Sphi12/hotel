@@ -1,1 +1,1 @@
-select count(1) from habitacion where id = :id
+select count(1) from RESERVA where ID_RESERVA = :id

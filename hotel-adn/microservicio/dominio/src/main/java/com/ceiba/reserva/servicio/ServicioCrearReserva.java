@@ -82,7 +82,7 @@ public class ServicioCrearReserva {
 
     private void validarTiempoMinimoReserva(LocalDate fechaIngreso) {
         if ((int) ChronoUnit.HOURS.between(LocalDateTime.now(), LocalDateTime.of
-                (fechaIngreso, LocalTime.of(14, 00, 00))) > 3) {
+                (fechaIngreso, LocalTime.of(14, 00, 00))) <= 3) {
             throw new ExcepcionValorInvalido(TIEMPO_SUPERADO_PARA_RESERVA);
         }
     }
@@ -115,7 +115,7 @@ public class ServicioCrearReserva {
 
     private Double obtenerPrecioTotal(ReservaInicial reservaInicial, boolean parqueadero) {
 
-        int diasEstadia = (int) ChronoUnit.HOURS.between(LocalDateTime.of
+        int diasEstadia = (int) ChronoUnit.DAYS.between(LocalDateTime.of
                 (reservaInicial.getFechaIngreso(), LocalTime.of(00, 00, 00)), LocalDateTime.of
                 (reservaInicial.getFechaSalida(), LocalTime.of(00, 00, 00)));
         Double precioTotal = 0.0;
@@ -166,7 +166,6 @@ public class ServicioCrearReserva {
     }
 
     private Double aplicarBeneficios(int cantidadDias, Double precioTotal) {
-
         if (cantidadDias >= CANTIDAD_DIAS_MIN_BENEFICIO) {
             precioTotal = precioTotal - (precioTotal * 0.10);
         }

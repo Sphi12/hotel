@@ -1,1 +1,1 @@
-insert into habitacion (tipo, disponible) values (:tipo, :disponible)
+insert into RESERVA (ID_HABITACION, ID_PARQUEADERO, ID_USUARIO, FECHA_RESERVA, FECHA_INGRESO, FECHA_SALIDA, PRECIO_TOTAL, CHECK_IN, CHECK_OUT) values (:idHabitacion, :idParqueadero, :idUsuario, :fechaReserva, :fechaIngreso, :fechaSalida, :precioTotal, :checkIn,:checkOut)

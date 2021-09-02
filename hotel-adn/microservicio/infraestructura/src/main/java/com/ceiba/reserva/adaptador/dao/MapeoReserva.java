@@ -3,6 +3,8 @@ package com.ceiba.reserva.adaptador.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
 
@@ -17,7 +19,7 @@ public class MapeoReserva implements RowMapper<DtoReserva>, MapperResult {
         Long idHabitacion = resultSet.getLong("ID_HABITACION");
         Long idParqueadero = resultSet.getLong("ID_PARQUEADERO");
         Long idUsuario = resultSet.getLong("ID_USUARIO");
-        LocalDate fechaReserva = extraerLocalDate(resultSet, "FECHA_RESERVA");
+        LocalDateTime fechaReserva = extraerLocalDateTime(resultSet, "FECHA_RESERVA");
         LocalDate fechaIngreso = extraerLocalDate(resultSet, "FECHA_INGRESO");
         LocalDate fechaSalida = extraerLocalDate(resultSet, "FECHA_SALIDA");
         Double precioTotal = resultSet.getDouble("PRECIO_TOTAL");

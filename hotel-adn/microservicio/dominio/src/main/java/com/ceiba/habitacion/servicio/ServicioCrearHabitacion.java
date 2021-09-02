@@ -21,7 +21,7 @@ public class ServicioCrearHabitacion {
     }
 
     private void validarExistenciaPrevia(Habitacion habitacion) {
-        boolean existe = this.repositorioHabitacion.existe(habitacion.getNombre());
+        boolean existe = this.repositorioHabitacion.existe(habitacion.getId());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA);
         }

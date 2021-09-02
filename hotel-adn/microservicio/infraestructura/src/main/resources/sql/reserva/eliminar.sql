@@ -1,3 +1,3 @@
 delete 
-from habitacion
-where id = :id
+from RESERVA
+where ID_RESERVA = :id
