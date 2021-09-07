@@ -16,7 +16,9 @@ public class ComandoReserva {
 
     private Long id;
     private Long idHabitacion;
+    private String tipoHabitacion;
     private Long idParqueadero;
+    private String tipoParqueadero;
     private Long idUsuario;
     private LocalDateTime fechaReserva;
     private LocalDate fechaIngreso;

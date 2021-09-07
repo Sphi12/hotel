@@ -46,7 +46,9 @@ create table IF NOT EXISTS tipoParqueadero (
 create table IF NOT EXISTS RESERVA (
  ID_RESERVA int(11) not null auto_increment,
  ID_HABITACION int(11) not null,
+ TIPO_ID_HABITACION VARCHAR(20) not null,
  ID_PARQUEADERO int(11) ,
+ TIPO_PARQUEADERO VARCHAR(20) not null,
  ID_USUARIO int(11) not null,
  FECHA_RESERVA TIMESTAMP NOT NULL,
  FECHA_INGRESO DATE NOT NULL,

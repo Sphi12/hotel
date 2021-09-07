@@ -5,6 +5,7 @@ import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.usuario.adaptador.dao.MapeoHabitacion;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -85,9 +86,13 @@ public class RepositorioHabitacionMysql implements RepositorioHabitacion {
 
     @Override
     public Long obtenerHabitacionDisponible(String tipo) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", tipo);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHabitacionDisponible, paramSource, Long.class);
+        try {
+            MapSqlParameterSource paramSource = new MapSqlParameterSource();
+            paramSource.addValue("nombre", tipo);
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHabitacionDisponible, paramSource, Long.class);
+        }catch(EmptyResultDataAccessException em){
+            return null;
+        }
     }
 
     @Override

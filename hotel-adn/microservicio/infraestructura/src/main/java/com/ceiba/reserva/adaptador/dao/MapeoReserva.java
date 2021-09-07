@@ -17,7 +17,9 @@ public class MapeoReserva implements RowMapper<DtoReserva>, MapperResult {
 
         Long id = resultSet.getLong("ID_RESERVA");
         Long idHabitacion = resultSet.getLong("ID_HABITACION");
+        String tipoHabitacion = resultSet.getString("TIPO_ID_HABITACION");
         Long idParqueadero = resultSet.getLong("ID_PARQUEADERO");
+        String tipoParqueadero = resultSet.getString("TIPO_PARQUEADERO");
         Long idUsuario = resultSet.getLong("ID_USUARIO");
         LocalDateTime fechaReserva = extraerLocalDateTime(resultSet, "FECHA_RESERVA");
         LocalDate fechaIngreso = extraerLocalDate(resultSet, "FECHA_INGRESO");
@@ -27,7 +29,8 @@ public class MapeoReserva implements RowMapper<DtoReserva>, MapperResult {
         boolean checkOut = resultSet.getBoolean("CHECK_OUT");
 
 
-        return new DtoReserva(id,idHabitacion,idParqueadero,idUsuario,fechaReserva,fechaIngreso,fechaSalida,precioTotal,checkIn,checkOut);
+        return new DtoReserva(id,idHabitacion,tipoHabitacion,idParqueadero,tipoParqueadero,
+                idUsuario,fechaReserva,fechaIngreso,fechaSalida,precioTotal,checkIn,checkOut);
     }
 
 }

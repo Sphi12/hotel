@@ -50,18 +50,20 @@ public class ServicioCrearReserva {
         this.repositorioTipoParqueadero = repositorioTipoParqueadero;
     }
 
-    public Long ejecutar(ReservaInicial reservaInicial) {
-        validarExistenciaPrevia(reservaInicial);
-        validarTiempoMinimoReserva(reservaInicial.getFechaIngreso());
-        validarExistenciaUsuario(reservaInicial.getIdUsuario());
+    public Long ejecutar(Reserva reserva) {
+        validarExistenciaPrevia(reserva);
+        validarTiempoMinimoReserva(reserva.getFechaIngreso());
+        validarExistenciaUsuario(reserva.getIdUsuario());
 
-        boolean parqueadero = reservaInicial.getTipoParqueadero().isEmpty();
-        Long idHabitacion = obtenerHabitacionDisponible(reservaInicial.getTipoHabitacion());
-        Long idParqueadero = obtenerParqueaderoDisponible(reservaInicial.getTipoParqueadero());
-        Reserva reserva = new Reserva(reservaInicial.getId(), idHabitacion, idParqueadero
-                , reservaInicial.getIdUsuario(),
-                LocalDateTime.now(), reservaInicial.getFechaIngreso(), reservaInicial.getFechaSalida(),
-                obtenerPrecioTotal(reservaInicial, !parqueadero), false, false);
+        System.out.println("RESERVA" + reserva.toString());
+        boolean parqueadero = reserva.getTipoParqueadero().isEmpty();
+        Long idHabitacion = obtenerHabitacionDisponible(reserva.getTipoHabitacion());
+        Long idParqueadero = obtenerParqueaderoDisponible(reserva.getTipoParqueadero());
+
+        reserva.setIdHabitacion(idHabitacion);
+        reserva.setIdParqueadero(idParqueadero);
+        reserva.setFechaReserva(LocalDateTime.now());
+        reserva.setPrecioTotal(obtenerPrecioTotal(reserva, !parqueadero));
 
         Long idReserva = this.repositorioReserva.crear(reserva);
         actualizarDisponibilidadHabitacion(idHabitacion);
@@ -69,7 +71,7 @@ public class ServicioCrearReserva {
         return idReserva;
     }
 
-    private void validarExistenciaPrevia(ReservaInicial reserva) {
+    private void validarExistenciaPrevia(Reserva reserva) {
         boolean existe = this.repositorioReserva.existe(reserva.getId());
         if (existe) {
             throw new ExcepcionDuplicidad(LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA);
@@ -113,26 +115,26 @@ public class ServicioCrearReserva {
         }
     }
 
-    private Double obtenerPrecioTotal(ReservaInicial reservaInicial, boolean parqueadero) {
+    private Double obtenerPrecioTotal(Reserva reserva, boolean parqueadero) {
 
         int diasEstadia = (int) ChronoUnit.DAYS.between(LocalDateTime.of
-                (reservaInicial.getFechaIngreso(), LocalTime.of(00, 00, 00)), LocalDateTime.of
-                (reservaInicial.getFechaSalida(), LocalTime.of(00, 00, 00)));
+                (reserva.getFechaIngreso(), LocalTime.of(00, 00, 00)), LocalDateTime.of
+                (reserva.getFechaSalida(), LocalTime.of(00, 00, 00)));
         Double precioTotal = 0.0;
         if (!parqueadero) {
-            precioTotal = obtenerPrecioTotalHabitacion(reservaInicial);
+            precioTotal = obtenerPrecioTotalHabitacion(reserva);
         } else {
-            precioTotal = obtenerPrecioTotalHabitacion(reservaInicial) + obtenerPrecioTotalParqueadero(reservaInicial, diasEstadia);
+            precioTotal = obtenerPrecioTotalHabitacion(reserva) + obtenerPrecioTotalParqueadero(reserva, diasEstadia);
         }
 
         return aplicarBeneficios(diasEstadia, precioTotal);
     }
 
-    private Double obtenerPrecioTotalHabitacion(ReservaInicial reservaInicial) {
+    private Double obtenerPrecioTotalHabitacion(Reserva reserva) {
         Double precioTotalHabitacion = 0.0;
-        DtoTipoHabitacion tipoHabitacion = obtenertipoHabitacion(reservaInicial.getTipoHabitacion());
-        LocalDate fechaAuxiliar = reservaInicial.getFechaIngreso();
-        while (fechaAuxiliar.isBefore(reservaInicial.getFechaSalida())) {
+        DtoTipoHabitacion tipoHabitacion = obtenertipoHabitacion(reserva.getTipoHabitacion());
+        LocalDate fechaAuxiliar = reserva.getFechaIngreso();
+        while (fechaAuxiliar.isBefore(reserva.getFechaSalida())) {
             if (fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
                     fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
                 precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
@@ -145,8 +147,8 @@ public class ServicioCrearReserva {
         return precioTotalHabitacion;
     }
 
-    private Double obtenerPrecioTotalParqueadero(ReservaInicial reservaInicial, int cantidadDias) {
-        return obtenertipoParqueadero(reservaInicial.getTipoParqueadero()).getPrecio() * cantidadDias;
+    private Double obtenerPrecioTotalParqueadero(Reserva reserva, int cantidadDias) {
+        return obtenertipoParqueadero(reserva.getTipoParqueadero()).getPrecio() * cantidadDias;
     }
 
     private DtoTipoHabitacion obtenertipoHabitacion(String tipoHabitacion) {
