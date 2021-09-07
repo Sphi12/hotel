@@ -66,6 +66,7 @@ public class ServicioCrearReserva {
         reserva.setPrecioTotal(obtenerPrecioTotal(reserva, !parqueadero));
 
         Long idReserva = this.repositorioReserva.crear(reserva);
+        //anotacion
         actualizarDisponibilidadHabitacion(idHabitacion);
 
         return idReserva;
@@ -114,6 +115,7 @@ public class ServicioCrearReserva {
             throw new ExcepcionSinDatos(NO_EXISTE_USUARIO);
         }
     }
+
 
     private Double obtenerPrecioTotal(Reserva reserva, boolean parqueadero) {
 
