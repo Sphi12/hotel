@@ -35,7 +35,7 @@ public class ConsultaControladorReservaTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id", is(2)));
+                .andExpect(jsonPath("$[0].id", is(1)));
     }
 
 
