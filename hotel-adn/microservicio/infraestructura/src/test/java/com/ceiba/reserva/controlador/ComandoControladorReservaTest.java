@@ -33,6 +33,28 @@ public class ComandoControladorReservaTest {
 
 
     @Test
+    public void crear() throws Exception{
+        // arrange
+        ComandoReservaInicial reservaInicial = new com.ceiba.resrva.servicio.testdatabuilder.ComandoReservaInicialTestDataBuilder().build();
+
+        // act - assert
+        mocMvc.perform(post("/reservas")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(reservaInicial)))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': 2}"));
+               // .andDo(
+                //resultValorar -> {
+                  //  Jugador  updateJugadorResponse = daojugador.getJugadorId(id)
+                   // assertEquals(1116745412, updateJugadorResponse.getInt("numeroIdentificacion"));
+//                    assertEquals("100000000.00", updateJugadorResponse.getString("valorizacion"));7
+  ///                  assertEquals("2021-04-13 00:00:00.0", updateJugadorResponse.getString("fechaValorizacion"));
+     //           }
+        //);
+    }
+
+
+    @Test
     public void actualizar() throws Exception{
         // arrange
         Long id = 1L;

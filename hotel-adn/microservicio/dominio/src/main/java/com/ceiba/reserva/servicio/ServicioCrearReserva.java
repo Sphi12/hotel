@@ -50,8 +50,9 @@ public class ServicioCrearReserva {
         this.repositorioTipoParqueadero = repositorioTipoParqueadero;
     }
 
+    //Manejar una sola entidad para Reserva. Agregar los id par y hab a reservaInicial
     public Long ejecutar(ReservaInicial reservaInicial) {
-        validarExistenciaPrevia(reservaInicial);
+        validarExistenciaPrevia(reservaInicial); //validar por usuario y fechas..
         validarTiempoMinimoReserva(reservaInicial.getFechaIngreso());
         validarExistenciaUsuario(reservaInicial.getIdUsuario());
 
@@ -64,6 +65,7 @@ public class ServicioCrearReserva {
                 obtenerPrecioTotal(reservaInicial, !parqueadero), false, false);
 
         Long idReserva = this.repositorioReserva.crear(reserva);
+        //anotacion
         actualizarDisponibilidadHabitacion(idHabitacion);
 
         return idReserva;
@@ -114,7 +116,7 @@ public class ServicioCrearReserva {
     }
 
     private Double obtenerPrecioTotal(ReservaInicial reservaInicial, boolean parqueadero) {
-
+      //consultar until para localDate
         int diasEstadia = (int) ChronoUnit.DAYS.between(LocalDateTime.of
                 (reservaInicial.getFechaIngreso(), LocalTime.of(00, 00, 00)), LocalDateTime.of
                 (reservaInicial.getFechaSalida(), LocalTime.of(00, 00, 00)));
