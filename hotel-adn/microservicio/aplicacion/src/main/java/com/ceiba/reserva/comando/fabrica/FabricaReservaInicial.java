@@ -9,7 +9,6 @@ public class FabricaReservaInicial {
 
     public Reserva crear(ComandoReservaInicial comandoReservaInicial) {
         return new Reserva(
-
                 comandoReservaInicial.getId(),
                 null,
                 comandoReservaInicial.getTipoHabitacion(),
@@ -23,7 +22,5 @@ public class FabricaReservaInicial {
                 false,
                 false
         );
-
     }
-
 }

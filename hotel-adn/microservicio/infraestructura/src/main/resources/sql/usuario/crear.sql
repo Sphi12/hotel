@@ -1,1 +1,1 @@
-insert into usuario (nombre, clave,fecha_creacion) values (:nombre, :clave, :fechaCreacion)
+insert into usuario (id,nombre, clave,fecha_creacion) values (:id,:nombre, :clave, :fechaCreacion)
