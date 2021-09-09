@@ -11,4 +11,5 @@ public interface DaoReserva {
      * @return los reservas
      */
     List<DtoReserva> listar();
+    DtoReserva obtener(Long id);
 }

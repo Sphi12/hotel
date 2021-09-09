@@ -1,22 +1,22 @@
 package com.ceiba.reserva.consulta;
 
-import java.util.List;
-
 import com.ceiba.reserva.modelo.dto.DtoReserva;
 import com.ceiba.reserva.puerto.dao.DaoReserva;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
-public class ManejadorListarReserva {
+public class ManejadorObtenerReserva {
 
     private final DaoReserva daoReserva;
 
-    public ManejadorListarReserva(DaoReserva daoReserva){
+    public ManejadorObtenerReserva(DaoReserva daoReserva){
         this.daoReserva = daoReserva;
     }
 
-    public List<DtoReserva> ejecutar(){ return this.daoReserva.listar(); }
+    public DtoReserva ejecutar(Long id){ return this.daoReserva.obtener(id); }
 
 
 

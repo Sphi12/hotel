@@ -4,9 +4,9 @@ jasypt:
       algorithm: PBEWithMD5AndDES
 
 server:
-   port: 8080
+   port:
    servlet:
-      context-path: /microservicio
+      context-path: /api
       session:
          timeout: 21600s
 
@@ -14,11 +14,9 @@ spring:
    datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
-      jdbcUrl: jdbc:mysql://localhost:3306/db_hotel
-      username: root
-      password: 12345
+      jdbcUrl: jdbc:mysql://db:3306/db_hotel
+      username: sophia
+      password: ssaa
+      initialization-mode: always
       hikari:
          poolName: pool
-
-profiles:
-   active: docker

@@ -18,12 +18,11 @@ public class Parqueadero {
 
 
     public Parqueadero(Long id,Long idTipoParqueadero, boolean disponible) {
-        validarObligatorio(idTipoParqueadero, SE_DEBE_INGRESAR_ID_TIPO_PARQUEADERO);
         validarObligatorio(disponible, SE_DEBE_INGRESAR_DISPONIBLE);
 
         this.id = id;
         this.idTipoParqueadero = idTipoParqueadero;
-        this.disponible = disponible;
+        this.disponible = true;
 
     }
 
