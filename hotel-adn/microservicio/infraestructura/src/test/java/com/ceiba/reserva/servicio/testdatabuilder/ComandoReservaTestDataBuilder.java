@@ -29,11 +29,11 @@ public class ComandoReservaTestDataBuilder {
         idParqueadero = 1L;
         tipoParqueadero = "carro";
         idUsuario = 1L;
-        fechaIngreso = LocalDate.of(2021, 9, 9);
-        fechaSalida = LocalDate.of(2021, 9, 14);
+        fechaIngreso = LocalDate.of(2021, 9, 21);
+        fechaSalida = LocalDate.of(2021, 9, 26);
         fechaReserva = LocalDateTime.now();
         precioTotal = 489000.0;
-        checkIn = true;
+        checkIn = false;
         checkOut = false;
     }
 

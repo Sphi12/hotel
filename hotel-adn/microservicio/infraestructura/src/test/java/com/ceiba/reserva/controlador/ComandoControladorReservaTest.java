@@ -58,12 +58,12 @@ public class ComandoControladorReservaTest {
     public void actualizar() throws Exception{
         // arrange
         Long id = 1L;
-        ComandoReserva usuario = new ComandoReservaTestDataBuilder().build();
+        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
 
         // act - assert
         mocMvc.perform(put("/reservas/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(usuario)))
+                .content(objectMapper.writeValueAsString(reserva)))
                 .andExpect(status().isOk());
     }
 
