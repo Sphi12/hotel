@@ -135,20 +135,21 @@ public class ServicioCrearReserva {
         Double precioTotalHabitacion = 0.0;
         DtoTipoHabitacion tipoHabitacion = obtenertipoHabitacion(reserva.getTipoHabitacion());
         LocalDate fechaAuxiliar = reserva.getFechaIngreso();
-        while (fechaAuxiliar.isBefore(reserva.getFechaSalida())) {
-            if (fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
-                    fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-                if(tipoHabitacion.getPrecioFinSemana() != null) {
-                    precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
+        if(tipoHabitacion != null) {
+            while (fechaAuxiliar.isBefore(reserva.getFechaSalida())) {
+                if (fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
+                        fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+                    if (tipoHabitacion.getPrecioFinSemana() != null) {
+                        precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
+                    }
+                } else {
+                    if (tipoHabitacion.getPrecioSemana() != null) {
+                        precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioSemana();
+                    }
                 }
-            } else {
-                if(tipoHabitacion.getPrecioSemana() != null) {
-                    precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioSemana();
-                }
+                fechaAuxiliar = fechaAuxiliar.plusDays(1);
             }
-            fechaAuxiliar = fechaAuxiliar.plusDays(1);
         }
-
         return precioTotalHabitacion;
     }
 
