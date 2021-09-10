@@ -23,7 +23,7 @@ public class ComandoReservaTestDataBuilder {
     private boolean checkOut;
 
     public ComandoReservaTestDataBuilder() {
-        id = 1L;
+        id = 2L;
         idHabitacion = 1L;
         tipoHabitacion = "individual";
         idParqueadero = 1L;

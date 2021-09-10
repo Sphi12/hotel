@@ -1,4 +1,4 @@
-package com.ceiba.reserva.controlador;
+package com.ceiba.parqueadero.controlador;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.parqueadero.comando.ComandoParqueadero;
+import com.ceiba.parqueadero.servicio.testdatabuilder.ComandoParqueaderoTestDataBuilder;
 import com.ceiba.reserva.comando.ComandoReserva;
 import com.ceiba.reserva.comando.ComandoReservaInicial;
 import com.ceiba.reserva.servicio.testdatabuilder.ComandoReservaTestDataBuilder;
@@ -22,8 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes= ApplicationMock.class)
-@WebMvcTest(ComandoControladorReserva.class)
-public class ComandoControladorReservaTest {
+@WebMvcTest(ComandoControladorParqueadero.class)
+public class ComandoControladorParqueaderoTest {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -35,45 +37,38 @@ public class ComandoControladorReservaTest {
     @Test
     public void crear() throws Exception{
         // arrange
-        ComandoReservaInicial reservaInicial = new com.ceiba.resrva.servicio.testdatabuilder.ComandoReservaInicialTestDataBuilder().build();
+        ComandoParqueadero comandoParqueadero = new ComandoParqueaderoTestDataBuilder().build();
 
         // act - assert
-        mocMvc.perform(post("/reservas")
+        mocMvc.perform(post("/parqueaderos")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(reservaInicial)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
-               // .andDo(
-                //resultValorar -> {
-                  //  Jugador  updateJugadorResponse = daojugador.getJugadorId(id)
-                   // assertEquals(1116745412, updateJugadorResponse.getInt("numeroIdentificacion"));
-//                    assertEquals("100000000.00", updateJugadorResponse.getString("valorizacion"));7
-  ///                  assertEquals("2021-04-13 00:00:00.0", updateJugadorResponse.getString("fechaValorizacion"));
-     //           }
-        //);
+                .content(objectMapper.writeValueAsString(comandoParqueadero)))
+                .andExpect(status().is5xxServerError());
+            //    .andExpect(content().json("{'valor': 2}"));
+
     }
 
 
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 1L;
-        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
+        Long id = 5L;
+        ComandoParqueadero comandoParqueadero = new ComandoParqueaderoTestDataBuilder().build();
 
         // act - assert
-        mocMvc.perform(put("/reservas/{id}",id)
+        mocMvc.perform(put("/parqueaderos/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(reserva)))
-                .andExpect(status().isOk());
+                .content(objectMapper.writeValueAsString(comandoParqueadero)))
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 5L;
 
         // act - assert
-        mocMvc.perform(delete("/reservas/{id}",id)
+        mocMvc.perform(delete("/parqueaderos/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

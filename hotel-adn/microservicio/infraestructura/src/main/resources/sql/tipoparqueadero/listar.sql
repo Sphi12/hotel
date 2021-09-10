@@ -1,2 +1,2 @@
-select id,nombre,descripcion,precio
+select id,nombre,descripción,precio
 from tipoParqueadero
