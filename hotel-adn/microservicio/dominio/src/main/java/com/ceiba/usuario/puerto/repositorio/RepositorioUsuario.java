@@ -8,32 +8,32 @@ public interface RepositorioUsuario {
      * @param usuario
      * @return el id generado
      */
-    Long crear(Usuario usuario);
+    Long crearUsuario(Usuario usuario);
 
     /**
      * Permite actualizar un usuario
      * @param usuario
      */
-    void actualizar(Usuario usuario);
+    void actualizarUsuario(Usuario usuario);
 
     /**
      * Permite eliminar un usuario
      * @param id
      */
-    void eliminar(Long id);
+    void eliminarUsuario(Long id);
 
     /**
      * Permite validar si existe un usuario con un nombre
      * @param nombre
      * @return si existe o no
      */
-    boolean existe(Long id);
+    boolean existeUsuario(Long id);
 
     /**
      * Permite validar si existe un usuario con un nombre excluyendo un id
      * @param nombre
      * @return si existe o no
      */
-    boolean existeExcluyendoId(Long id,String nombre);
+    boolean existeExcluyendoIdUsuario(Long id, String nombre);
 
 }

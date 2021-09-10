@@ -16,11 +16,11 @@ public class ServicioActualizarHabitacion {
 
     public void ejecutar(Habitacion habitacion) {
         validarExistenciaPrevia(habitacion);
-        this.repositorioHabitacion.actualizar(habitacion);
+        this.repositorioHabitacion.actualizarHabitacion(habitacion);
     }
 
     private void validarExistenciaPrevia(Habitacion habitacion) {
-        boolean existe = this.repositorioHabitacion.existeExcluyendoId(habitacion.getId(),habitacion.getTipo());
+        boolean existe = this.repositorioHabitacion.existeExcluyendoIdHabitacion(habitacion.getId(),habitacion.getTipo());
         if(!existe) {
             throw new ExcepcionSinDatos(YA_EXISTE_EN_EL_SISTEMA);
         }

@@ -17,89 +17,89 @@ public class RepositorioHabitacionMysql implements RepositorioHabitacion {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="habitacion", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearHabitacion;
 
     @SqlStatement(namespace="habitacion", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarHabitacion;
 
     @SqlStatement(namespace="habitacion", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarHabitacion;
 
     @SqlStatement(namespace="habitacion", value="existe")
-    private static String sqlExiste;
+    private static String sqlExisteHabitacion;
 
     @SqlStatement(namespace="habitacion", value="existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+    private static String sqlExisteExcluyendoIdHabitacion;
 
     @SqlStatement(namespace = "habitacion", value = "listarPorTipo")
-    private static String sqlListarTipo;
+    private static String sqlListarTipoHabitacion;
 
     @SqlStatement(namespace = "habitacion", value = "obtenerHabitacionDisponible")
-    private static String sqlObtenerHabitacionDisponible;
+    private static String sqlObtenerHabitacionDisponibleHabitacion;
 
     @SqlStatement(namespace = "habitacion", value = "actualizarDisponibilidad")
-    private static String sqlactualizarDisponibilidad;
+    private static String sqlactualizarDisponibilidadHabitacion;
 
     public RepositorioHabitacionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(Habitacion habitacion) {
-        return this.customNamedParameterJdbcTemplate.crear(habitacion, sqlCrear);
+    public Long crearHabitacion(Habitacion habitacion) {
+        return this.customNamedParameterJdbcTemplate.crear(habitacion, sqlCrearHabitacion);
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminarHabitacion(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarHabitacion, paramSource);
     }
 
     @Override
-    public boolean existe(Long id) {
+    public boolean existeHabitacion(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteHabitacion,paramSource, Boolean.class);
     }
 
     @Override
-    public void actualizar(Habitacion habitacion) {
-        this.customNamedParameterJdbcTemplate.actualizar(habitacion, sqlActualizar);
+    public void actualizarHabitacion(Habitacion habitacion) {
+        this.customNamedParameterJdbcTemplate.actualizar(habitacion, sqlActualizarHabitacion);
     }
 
     @Override
-    public boolean existeExcluyendoId(Long id, Long tipo) {
+    public boolean existeExcluyendoIdHabitacion(Long id, Long tipo) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         paramSource.addValue("tipo", tipo);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoIdHabitacion,paramSource, Boolean.class);
     }
 
     @Override
-    public List<DtoHabitacion> listarPorTipo() {
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarTipo, new MapeoHabitacion());
+    public List<DtoHabitacion> listarPorTipoHabitacion() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarTipoHabitacion, new MapeoHabitacion());
     }
 
     @Override
-    public Long obtenerHabitacionDisponible(String tipo) {
+    public Long obtenerHabitacionDisponibleHabitacion(String tipo) {
         try {
             MapSqlParameterSource paramSource = new MapSqlParameterSource();
             paramSource.addValue("nombre", tipo);
-            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHabitacionDisponible, paramSource, Long.class);
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHabitacionDisponibleHabitacion, paramSource, Long.class);
         }catch(EmptyResultDataAccessException em){
             return null;
         }
     }
 
     @Override
-    public void actualizarDisponibilidad(Long id, String disponible) {
+    public void actualizarDisponibilidadHabitacion(Long id, String disponible) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("disponible", disponible);
         paramSource.addValue("id", id);
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlactualizarDisponibilidad, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlactualizarDisponibilidadHabitacion, paramSource);
     }
 }

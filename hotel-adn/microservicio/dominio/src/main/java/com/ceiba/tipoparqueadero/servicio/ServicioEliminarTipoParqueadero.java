@@ -11,6 +11,6 @@ public class ServicioEliminarTipoParqueadero {
     }
 
     public void ejecutar(Long id) {
-        this.repositorioTipoParqueadero.eliminar(id);
+        this.repositorioTipoParqueadero.eliminarTParqueadero(id);
     }
 }

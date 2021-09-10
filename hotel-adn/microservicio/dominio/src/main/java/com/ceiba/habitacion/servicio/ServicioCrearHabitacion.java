@@ -17,11 +17,11 @@ public class ServicioCrearHabitacion {
 
     public Long ejecutar(Habitacion habitacion) {
         validarExistenciaPrevia(habitacion);
-        return this.repositorioHabitacion.crear(habitacion);
+        return this.repositorioHabitacion.crearHabitacion(habitacion);
     }
 
     private void validarExistenciaPrevia(Habitacion habitacion) {
-        boolean existe = this.repositorioHabitacion.existe(habitacion.getId());
+        boolean existe = this.repositorioHabitacion.existeHabitacion(habitacion.getId());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA);
         }

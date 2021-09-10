@@ -16,11 +16,11 @@ public class ServicioActualizarUsuario {
 
     public void ejecutar(Usuario usuario) {
         validarExistenciaPrevia(usuario);
-        this.repositorioUsuario.actualizar(usuario);
+        this.repositorioUsuario.actualizarUsuario(usuario);
     }
 
     private void validarExistenciaPrevia(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existeExcluyendoId(usuario.getId(),usuario.getNombre());
+        boolean existe = this.repositorioUsuario.existeExcluyendoIdUsuario(usuario.getId(),usuario.getNombre());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA);
         }

@@ -41,7 +41,7 @@ public class ServicioCrearReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(true);
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,
                 repositorioTipoHabitacion, repositorioTipoParqueadero);
@@ -60,7 +60,7 @@ public class ServicioCrearReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(false);
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,
                 repositorioTipoHabitacion, repositorioTipoParqueadero);
@@ -79,7 +79,7 @@ public class ServicioCrearReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(false);
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,
                 repositorioTipoHabitacion, repositorioTipoParqueadero);
@@ -99,10 +99,10 @@ public class ServicioCrearReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioUsuario.existe(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioHabitacion.obtenerHabitacionDisponible(Mockito.anyString())).thenReturn(1L);
-        Mockito.when(repositorioParqueadero.obtenerParqueaderoDisponible(Mockito.anyString())).thenReturn(1L);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioUsuario.existeUsuario(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioHabitacion.obtenerHabitacionDisponibleHabitacion(Mockito.anyString())).thenReturn(1L);
+        Mockito.when(repositorioParqueadero.obtenerParqueaderoDisponibleParqueadero(Mockito.anyString())).thenReturn(1L);
 
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         List<DtoTipoHabitacion> habitaciones = new ArrayList<>();
@@ -115,8 +115,8 @@ public class ServicioCrearReservaTest {
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
                 tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
 
-        Mockito.when(repositorioTipoHabitacion.obtenerPorId(Mockito.anyString())).thenReturn(habitaciones);
-        Mockito.when(repositorioTipoParqueadero.obtenerId(Mockito.anyString())).thenReturn(parqueaderoList);
+        Mockito.when(repositorioTipoHabitacion.obtenerPorIdTHabitacion(Mockito.anyString())).thenReturn(habitaciones);
+        Mockito.when(repositorioTipoParqueadero.obtenerIdTParqueadero(Mockito.anyString())).thenReturn(parqueaderoList);
 
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,
@@ -139,10 +139,10 @@ public class ServicioCrearReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioUsuario.existe(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioHabitacion.obtenerHabitacionDisponible(Mockito.anyString())).thenReturn(1L);
-        Mockito.when(repositorioParqueadero.obtenerParqueaderoDisponible(Mockito.anyString())).thenReturn(1L);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioUsuario.existeUsuario(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioHabitacion.obtenerHabitacionDisponibleHabitacion(Mockito.anyString())).thenReturn(1L);
+        Mockito.when(repositorioParqueadero.obtenerParqueaderoDisponibleParqueadero(Mockito.anyString())).thenReturn(1L);
 
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         List<DtoTipoHabitacion> habitaciones = new ArrayList<>();
@@ -155,8 +155,8 @@ public class ServicioCrearReservaTest {
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
                 tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
 
-        Mockito.when(repositorioTipoHabitacion.obtenerPorId(Mockito.anyString())).thenReturn(habitaciones);
-        Mockito.when(repositorioTipoParqueadero.obtenerId(Mockito.anyString())).thenReturn(parqueaderoList);
+        Mockito.when(repositorioTipoHabitacion.obtenerPorIdTHabitacion(Mockito.anyString())).thenReturn(habitaciones);
+        Mockito.when(repositorioTipoParqueadero.obtenerIdTParqueadero(Mockito.anyString())).thenReturn(parqueaderoList);
 
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,
@@ -180,10 +180,10 @@ public class ServicioCrearReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioUsuario.existe(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioHabitacion.obtenerHabitacionDisponible(Mockito.anyString())).thenReturn(1L);
-        Mockito.when(repositorioParqueadero.obtenerParqueaderoDisponible(Mockito.anyString())).thenReturn(1L);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioUsuario.existeUsuario(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioHabitacion.obtenerHabitacionDisponibleHabitacion(Mockito.anyString())).thenReturn(1L);
+        Mockito.when(repositorioParqueadero.obtenerParqueaderoDisponibleParqueadero(Mockito.anyString())).thenReturn(1L);
 
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         List<DtoTipoHabitacion> habitaciones = new ArrayList<>();
@@ -196,8 +196,8 @@ public class ServicioCrearReservaTest {
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
                 tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
 
-        Mockito.when(repositorioTipoHabitacion.obtenerPorId(Mockito.anyString())).thenReturn(habitaciones);
-        Mockito.when(repositorioTipoParqueadero.obtenerId(Mockito.anyString())).thenReturn(parqueaderoList);
+        Mockito.when(repositorioTipoHabitacion.obtenerPorIdTHabitacion(Mockito.anyString())).thenReturn(habitaciones);
+        Mockito.when(repositorioTipoParqueadero.obtenerIdTParqueadero(Mockito.anyString())).thenReturn(parqueaderoList);
 
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,

@@ -31,7 +31,7 @@ public class ServicioActualizarReservaTest {
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(true);
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, repositorioParqueadero,
                 repositorioHabitacion, repositorioUsuario,
                 repositorioTipoHabitacion, repositorioTipoParqueadero);
@@ -47,7 +47,7 @@ public class ServicioActualizarReservaTest {
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         DaoReserva daoReserva = Mockito.mock(DaoReserva.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(true);
         DtoReserva dtoReserva = new DtoReserva(1L, reserva.getIdHabitacion(), reserva.getTipoHabitacion(),
                 reserva.getIdParqueadero(), reserva.getTipoParqueadero(), reserva.getIdUsuario(), reserva.getFechaReserva(),
                 reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getPrecioTotal(), !reserva.isCheckIn(), reserva.isCheckOut());
@@ -65,7 +65,7 @@ public class ServicioActualizarReservaTest {
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         DaoReserva daoReserva = Mockito.mock(DaoReserva.class);
 
-        Mockito.when(repositorioReserva.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioReserva.existeReserva(Mockito.anyLong())).thenReturn(true);
         DtoReserva dtoReserva = new DtoReserva(1L, reserva.getIdHabitacion(), reserva.getTipoHabitacion(),
                 reserva.getIdParqueadero(), reserva.getTipoParqueadero(), reserva.getIdUsuario(), reserva.getFechaReserva(),
                 reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getPrecioTotal(), !reserva.isCheckIn(), reserva.isCheckOut());

@@ -13,56 +13,56 @@ public class RepositorioReservaMysql implements RepositorioReserva {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="reserva", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearReserva;
 
     @SqlStatement(namespace="reserva", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarReserva;
 
     @SqlStatement(namespace="reserva", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarReserva;
 
     @SqlStatement(namespace="reserva", value="existe")
-    private static String sqlExiste;
+    private static String sqlExisteReserva;
 
     @SqlStatement(namespace="reserva", value="existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+    private static String sqlExisteExcluyendoIdReserva;
 
     public RepositorioReservaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(Reserva reserva) {
-        return this.customNamedParameterJdbcTemplate.crear(reserva, sqlCrear);
+    public Long crearReserva(Reserva reserva) {
+        return this.customNamedParameterJdbcTemplate.crear(reserva, sqlCrearReserva);
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminarReserva(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarReserva, paramSource);
     }
 
     @Override
-    public boolean existe(Long id) {
+    public boolean existeReserva(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteReserva,paramSource, Boolean.class);
     }
 
     @Override
-    public void actualizar(Reserva reserva) {
-        this.customNamedParameterJdbcTemplate.actualizar(reserva, sqlActualizar);
+    public void actualizarReserva(Reserva reserva) {
+        this.customNamedParameterJdbcTemplate.actualizar(reserva, sqlActualizarReserva);
     }
 
     @Override
-    public boolean existeExcluyendoId(Long id, String nombre) {
+    public boolean existeExcluyendoIdReserva(Long id, String nombre) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoIdReserva,paramSource, Boolean.class);
     }
 }

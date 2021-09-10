@@ -17,67 +17,67 @@ public class RepositorioTipoParqueaderoMysql implements RepositorioTipoParqueade
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="tipoparqueadero", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearTParqueadero;
 
     @SqlStatement(namespace="tipoparqueadero", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarTParqueadero;
 
     @SqlStatement(namespace="tipoparqueadero", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarTParqueadero;
 
     @SqlStatement(namespace="tipoparqueadero", value="existe")
-    private static String sqlExiste;
+    private static String sqlExisteTParqueadero;
 
     @SqlStatement(namespace="tipoparqueadero", value="existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+    private static String sqlExisteExcluyendoIdTParqueadero;
 
     @SqlStatement(namespace = "tipoparqueadero", value = "obtenerParqueaderoId")
-    private static String sqlObtenerParqueaderoId;
+    private static String sqlObtenerParqueaderoIdTParqueadero;
 
     public RepositorioTipoParqueaderoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(TipoParqueadero tipoParqueadero) {
-        return this.customNamedParameterJdbcTemplate.crear(tipoParqueadero, sqlCrear);
+    public Long crearTParqueadero(TipoParqueadero tipoParqueadero) {
+        return this.customNamedParameterJdbcTemplate.crear(tipoParqueadero, sqlCrearTParqueadero);
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminarTParqueadero(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarTParqueadero, paramSource);
     }
 
     @Override
-    public boolean existe(Long id) {
+    public boolean existeTParqueadero(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTParqueadero,paramSource, Boolean.class);
     }
 
     @Override
-    public void actualizar(TipoParqueadero tipoParqueadero) {
-        this.customNamedParameterJdbcTemplate.actualizar(tipoParqueadero, sqlActualizar);
+    public void actualizarTParqueadero(TipoParqueadero tipoParqueadero) {
+        this.customNamedParameterJdbcTemplate.actualizar(tipoParqueadero, sqlActualizarTParqueadero);
     }
 
     @Override
-    public boolean existeExcluyendoId(Long id, String nombre) {
+    public boolean existeExcluyendoIdTParqueadero(Long id, String nombre) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoIdTParqueadero,paramSource, Boolean.class);
     }
 
     @Override
-    public List<DtoTipoParqueadero> obtenerId(String nombre) {
+    public List<DtoTipoParqueadero> obtenerIdTParqueadero(String nombre) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerParqueaderoId, paramSource,new MapeoTipoParqueadero());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerParqueaderoIdTParqueadero, paramSource,new MapeoTipoParqueadero());
     }
 }

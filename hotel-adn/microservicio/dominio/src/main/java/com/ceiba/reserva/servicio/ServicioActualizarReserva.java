@@ -29,11 +29,11 @@ public class ServicioActualizarReserva {
     public void ejecutar(Reserva reserva) {
         validarExistenciaPrevia(reserva);
         validarCheckIn(daoReserva.obtener(reserva.getId()), reserva);
-        this.repositorioReserva.actualizar(reserva);
+        this.repositorioReserva.actualizarReserva(reserva);
     }
 
     private void validarExistenciaPrevia(Reserva reserva) {
-        boolean existe = this.repositorioReserva.existe(reserva.getId());
+        boolean existe = this.repositorioReserva.existeReserva(reserva.getId());
         if(!existe) {
             throw new ExcepcionSinDatos(LA_RESERVA_NO_EXISTE_EN_EL_SISTEMA);
         }

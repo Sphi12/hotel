@@ -16,7 +16,7 @@ public class ServicioCrearHabitacionTest {
         Habitacion habitacion = new HabitacionroTestDataBuilder().build();
         // arrange
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
-        Mockito.when(repositorioHabitacion.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioHabitacion.existeHabitacion(Mockito.anyLong())).thenReturn(true);
         ServicioCrearHabitacion servicioCrearHabitacion = new ServicioCrearHabitacion(repositorioHabitacion);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearHabitacion.ejecutar(habitacion), ExcepcionDuplicidad.class, "La habitacion ya existe en el sistema");

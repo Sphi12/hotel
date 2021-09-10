@@ -64,7 +64,7 @@ public class ServicioCrearReserva {
         reserva.setFechaReserva(LocalDateTime.now());
         reserva.setPrecioTotal(obtenerPrecioTotal(reserva, !parqueadero));
 
-        Long idReserva = this.repositorioReserva.crear(reserva);
+        Long idReserva = this.repositorioReserva.crearReserva(reserva);
         //anotacion
         actualizarDisponibilidadHabitacion(idHabitacion);
 
@@ -72,14 +72,14 @@ public class ServicioCrearReserva {
     }
 
     private void validarExistenciaPrevia(Reserva reserva) {
-        boolean existe = this.repositorioReserva.existe(reserva.getId());
+        boolean existe = this.repositorioReserva.existeReserva(reserva.getId());
         if (existe) {
             throw new ExcepcionDuplicidad(LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 
     private void actualizarDisponibilidadHabitacion(Long id) {
-        this.repositorioHabitacion.actualizarDisponibilidad(id, "0");
+        this.repositorioHabitacion.actualizarDisponibilidadHabitacion(id, "0");
     }
 
     private void validarTiempoMinimoReserva(LocalDate fechaIngreso) {
@@ -90,7 +90,7 @@ public class ServicioCrearReserva {
     }
 
     private Long obtenerHabitacionDisponible(String tipoHabitacion) {
-        Long idHabitacion = this.repositorioHabitacion.obtenerHabitacionDisponible(tipoHabitacion);
+        Long idHabitacion = this.repositorioHabitacion.obtenerHabitacionDisponibleHabitacion(tipoHabitacion);
 
         if (idHabitacion != null) {
             return idHabitacion;
@@ -100,7 +100,7 @@ public class ServicioCrearReserva {
 
     private Long obtenerParqueaderoDisponible(String tipoParqueadero) {
         if (tipoParqueadero != null) {
-            Long idParqueadero = this.repositorioParqueadero.obtenerParqueaderoDisponible(tipoParqueadero);
+            Long idParqueadero = this.repositorioParqueadero.obtenerParqueaderoDisponibleParqueadero(tipoParqueadero);
             if (idParqueadero != null) {
                 return idParqueadero;
             }
@@ -110,7 +110,7 @@ public class ServicioCrearReserva {
     }
 
     private void validarExistenciaUsuario(Long idUsuario) {
-        if (!this.repositorioUsuario.existe(idUsuario)) {
+        if (!this.repositorioUsuario.existeUsuario(idUsuario)) {
             throw new ExcepcionSinDatos(NO_EXISTE_USUARIO);
         }
     }
@@ -162,7 +162,7 @@ public class ServicioCrearReserva {
     }
 
     private DtoTipoHabitacion obtenertipoHabitacion(String tipoHabitacion) {
-        List<DtoTipoHabitacion> tipoHabitacionList = this.repositorioTipoHabitacion.obtenerPorId(tipoHabitacion);
+        List<DtoTipoHabitacion> tipoHabitacionList = this.repositorioTipoHabitacion.obtenerPorIdTHabitacion(tipoHabitacion);
         if(!tipoHabitacionList.isEmpty() && tipoHabitacionList.size()>0){
             return tipoHabitacionList.get(0);
         }
@@ -170,7 +170,7 @@ public class ServicioCrearReserva {
     }
 
     private DtoTipoParqueadero obtenertipoParqueadero(String tipoParqueadero) {
-        List<DtoTipoParqueadero> tipoParqueaderoList = this.repositorioTipoParqueadero.obtenerId(tipoParqueadero);
+        List<DtoTipoParqueadero> tipoParqueaderoList = this.repositorioTipoParqueadero.obtenerIdTParqueadero(tipoParqueadero);
         if(!tipoParqueaderoList.isEmpty() && tipoParqueaderoList.size() > 0){
             return tipoParqueaderoList.get(0);
         }

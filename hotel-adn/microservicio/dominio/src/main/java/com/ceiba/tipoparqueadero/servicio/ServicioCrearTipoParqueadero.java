@@ -17,11 +17,11 @@ public class ServicioCrearTipoParqueadero {
 
     public Long ejecutar(TipoParqueadero tipoParqueadero) {
         validarExistenciaPrevia(tipoParqueadero);
-        return this.repositorioTipoParqueadero.crear(tipoParqueadero);
+        return this.repositorioTipoParqueadero.crearTParqueadero(tipoParqueadero);
     }
 
     private void validarExistenciaPrevia(TipoParqueadero tipoParqueadero) {
-        boolean existe = this.repositorioTipoParqueadero.existe(tipoParqueadero.getId());
+        boolean existe = this.repositorioTipoParqueadero.existeTParqueadero(tipoParqueadero.getId());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_TIPO_PARQUEADERO_YA_EXISTE_EN_EL_SISTEMA);
         }

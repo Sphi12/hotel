@@ -19,13 +19,8 @@ public class Reserva {
     private static final String SE_DEBE_INGRESAR_EL_ID_DE_LA_HABITACION = "Se debe ingresar el id de la habitacion";
     private static final String SE_DEBE_INGRESAR_EL_ID_DEL_PARQUEADERO = "Se debe ingresar el id del parqueadero";
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_DE_RESERVA = "Se debe ingresar la fecha de reserva";
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_DE_INGRESO = "Se debe ingresar la fecha de ingreso";
+     private static final String SE_DEBE_INGRESAR_LA_FECHA_DE_INGRESO = "Se debe ingresar la fecha de ingreso";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_DE_SALIDA = "Se debe ingresar la fecha de salida";
-
-    private static final String EL_PRECIO_DIA_DEBE_SER_UN_NUMERO = "el precio dia debe ser un numero";
-    private static final String SE_DEBE_INGRESAR_LA_CLAVE = "Se debe ingresar la clave";
-    private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
 
     private static final String TIPO_HABITACION_INDIVIDUAL = "individual";
     private static final String TIPO_HABITACION_DOBLE = "Doble";
@@ -36,9 +31,7 @@ public class Reserva {
     private static final String TIPO_HABITACION_INVALIDO = "Tipo de habitacion invalido, debe ingresar: individual o doble o cuadruples";
     private static final String TIPO_PARQUEADERO_INVALIDO = "Tipo de parqueadero invalido, debe ingresar: moto o carro o bicicleta";
     private static final String FECHA_INGRESO_INCORRECTA = "La fecha de ingreso debe ser menor o igual a la fecha salida" ;
-
-    private static final int LONGITUD_MINIMA_CLAVE = 4;
-
+    
     private Long id;
     private Long idHabitacion;
     private String tipoHabitacion;

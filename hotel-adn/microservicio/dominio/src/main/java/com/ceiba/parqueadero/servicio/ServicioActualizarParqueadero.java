@@ -17,11 +17,11 @@ public class ServicioActualizarParqueadero {
 
     public void ejecutar(Parqueadero parqueadero) {
         validarExistenciaPrevia(parqueadero);
-        this.repositorioParqueadero.actualizar(parqueadero);
+        this.repositorioParqueadero.actualizarParqueadero(parqueadero);
     }
 
     private void validarExistenciaPrevia(Parqueadero parqueadero) {
-        boolean existe = this.repositorioParqueadero.existe(parqueadero.getId());
+        boolean existe = this.repositorioParqueadero.existeParqueadero(parqueadero.getId());
         if(!existe) {
             throw new ExcepcionSinDatos(EL_PARQUEAERO_NO_EXISTE_EN_EL_SISTEMA);
         }

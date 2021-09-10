@@ -12,33 +12,33 @@ public interface RepositorioTipoParqueadero {
      * @param tipoParqueadero
      * @return el id generado
      */
-    Long crear(TipoParqueadero tipoParqueadero);
+    Long crearTParqueadero(TipoParqueadero tipoParqueadero);
 
     /**
      * Permite actualizar un tipoParqueadero
      * @param tipoParqueadero
      */
-    void actualizar(TipoParqueadero tipoParqueadero);
+    void actualizarTParqueadero(TipoParqueadero tipoParqueadero);
 
     /**
      * Permite eliminar un tipoParqueadero
      * @param id
      */
-    void eliminar(Long id);
+    void eliminarTParqueadero(Long id);
 
     /**
      * Permite validar si existe un tipoParqueadero con un id
      * @param id
      * @return si existe o no
      */
-    boolean existe(Long id);
+    boolean existeTParqueadero(Long id);
 
     /**
      * Permite validar si existe un tipoParqueadero con un nombre excluyendo un id
      * @param nombre
      * @return si existe o no
      */
-    boolean existeExcluyendoId(Long id,String nombre);
+    boolean existeExcluyendoIdTParqueadero(Long id, String nombre);
 
-    public List<DtoTipoParqueadero> obtenerId(String nombre);
+    public List<DtoTipoParqueadero> obtenerIdTParqueadero(String nombre);
 }
