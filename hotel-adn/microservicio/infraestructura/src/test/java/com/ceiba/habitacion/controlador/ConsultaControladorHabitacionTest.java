@@ -36,15 +36,12 @@ public class ConsultaControladorHabitacionTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].tipo", is(1)))
-                .andExpect(jsonPath("$[0].disponible", is(true)))
 
                 .andExpect(jsonPath("$[1].id", is(2)))
                 .andExpect(jsonPath("$[1].tipo", is(1)))
-                .andExpect(jsonPath("$[1].disponible", is(true)))
 
                 .andExpect(jsonPath("$[2].id", is(3)))
-                .andExpect(jsonPath("$[2].tipo", is(1)))
-                .andExpect(jsonPath("$[2].disponible", is(true)));
+                .andExpect(jsonPath("$[2].tipo", is(1)));
 
     }
 
