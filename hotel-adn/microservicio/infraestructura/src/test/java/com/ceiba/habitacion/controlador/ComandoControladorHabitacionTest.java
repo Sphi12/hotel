@@ -59,7 +59,7 @@ public class ComandoControladorHabitacionTest {
         mocMvc.perform(put("/habitaciones/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(habitacion)))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isOk());
     }
 
     @Test
