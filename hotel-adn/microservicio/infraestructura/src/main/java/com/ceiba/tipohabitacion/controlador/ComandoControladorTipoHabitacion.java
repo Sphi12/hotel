@@ -2,7 +2,6 @@ package com.ceiba.tipohabitacion.controlador;
 
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.tipohabitacion.comando.ComandoTipoHabitacion;
-import com.ceiba.tipohabitacion.comando.manejador.ManejadorActualizarTipoHabitacion;
 import com.ceiba.tipohabitacion.comando.manejador.ManejadorCrearTipoHabitacion;
 import com.ceiba.tipohabitacion.comando.manejador.ManejadorEliminarTipoHabitacion;
 import io.swagger.annotations.Api;
@@ -17,15 +16,12 @@ public class ComandoControladorTipoHabitacion {
 
     private final ManejadorCrearTipoHabitacion manejadorCrearTipoHabitacion;
 	private final ManejadorEliminarTipoHabitacion manejadorEliminarTipoHabitacion;
-	private final ManejadorActualizarTipoHabitacion manejadorActualizarTipoHabitacion;
 
     @Autowired
     public ComandoControladorTipoHabitacion(ManejadorCrearTipoHabitacion manejadorCrearHabitacion,
-											ManejadorEliminarTipoHabitacion manejadorEliminarHabitacion,
-											ManejadorActualizarTipoHabitacion manejadorActualizarHabitacion) {
+											ManejadorEliminarTipoHabitacion manejadorEliminarHabitacion) {
         this.manejadorCrearTipoHabitacion = manejadorCrearHabitacion;
 		this.manejadorEliminarTipoHabitacion = manejadorEliminarHabitacion;
-		this.manejadorActualizarTipoHabitacion = manejadorActualizarHabitacion;
     }
 
     @PostMapping

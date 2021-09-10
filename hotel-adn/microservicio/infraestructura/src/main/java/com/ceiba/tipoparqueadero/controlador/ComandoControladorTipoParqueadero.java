@@ -3,7 +3,6 @@ package com.ceiba.tipoparqueadero.controlador;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.tipohabitacion.comando.ComandoTipoHabitacion;
 import com.ceiba.tipoparqueadero.comando.ComandoTipoParqueadero;
-import com.ceiba.tipoparqueadero.comando.manejador.ManejadorActualizarTipoParqueadero;
 import com.ceiba.tipoparqueadero.comando.manejador.ManejadorCrearTipoParqueadero;
 import com.ceiba.tipoparqueadero.comando.manejador.ManejadorEliminarTipoParqueadero;
 import io.swagger.annotations.Api;
@@ -18,15 +17,12 @@ public class ComandoControladorTipoParqueadero {
 
     private final ManejadorCrearTipoParqueadero manejadorCrearTipoParqueadero;
 	private final ManejadorEliminarTipoParqueadero manejadorEliminarTipoParqueadero;
-	private final ManejadorActualizarTipoParqueadero manejadorActualizarTipoParqueadero;
 
     @Autowired
     public ComandoControladorTipoParqueadero(ManejadorCrearTipoParqueadero manejadorCrearHabitacion,
-											 ManejadorEliminarTipoParqueadero manejadorEliminarHabitacion,
-											 ManejadorActualizarTipoParqueadero manejadorActualizarHabitacion) {
+											 ManejadorEliminarTipoParqueadero manejadorEliminarHabitacion) {
         this.manejadorCrearTipoParqueadero = manejadorCrearHabitacion;
 		this.manejadorEliminarTipoParqueadero = manejadorEliminarHabitacion;
-		this.manejadorActualizarTipoParqueadero = manejadorActualizarHabitacion;
     }
 
     @PostMapping
