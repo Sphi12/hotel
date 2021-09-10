@@ -6,7 +6,7 @@ import com.ceiba.tipoparqueadero.puerto.repositorio.RepositorioTipoParqueadero;
 
 public class ServicioActualizarTipoParqueadero {
 
-    private static final String EL_TIPO_PARQUEADERO_YA_EXISTE_EN_EL_SISTEMA = "El tipo parqueadero ya existe en el sistema";
+    private static final String EL_TIPO_PARQUEADERO_YA_EXISTE_EN_EL_SISTEMA = "El tipo parqueadero no existe en el sistema";
 
     private final RepositorioTipoParqueadero repositorioTipoParqueadero;
 
@@ -21,7 +21,7 @@ public class ServicioActualizarTipoParqueadero {
 
     private void validarExistenciaPrevia(TipoParqueadero tipoParqueadero) {
         boolean existe = this.repositorioTipoParqueadero.existeExcluyendoId(tipoParqueadero.getId(),tipoParqueadero.getNombre());
-        if(existe) {
+        if(!existe) {
             throw new ExcepcionDuplicidad(EL_TIPO_PARQUEADERO_YA_EXISTE_EN_EL_SISTEMA);
         }
     }

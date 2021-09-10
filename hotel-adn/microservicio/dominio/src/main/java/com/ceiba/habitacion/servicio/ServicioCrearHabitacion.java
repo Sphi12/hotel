@@ -7,7 +7,7 @@ import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 
 public class ServicioCrearHabitacion {
 
-    private static final String EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA = "El usuario ya existe en el sistema";
+    private static final String EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA = "La habitacion ya existe en el sistema";
 
     private final RepositorioHabitacion repositorioHabitacion;
 
