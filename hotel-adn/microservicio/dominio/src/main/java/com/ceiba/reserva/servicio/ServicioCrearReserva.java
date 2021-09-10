@@ -51,7 +51,7 @@ public class ServicioCrearReserva {
     }
 
     public Long ejecutar(Reserva reserva) {
-//        validarExistenciaPrevia(reserva);
+        validarExistenciaPrevia(reserva);
         validarTiempoMinimoReserva(reserva.getFechaIngreso());
         validarExistenciaUsuario(reserva.getIdUsuario());
 

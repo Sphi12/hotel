@@ -1,4 +1,4 @@
-package com.ceiba.reserva.servicio.testdatabuilder;
+package com.ceiba.tipoHabitacion.servicio.testdatabuilder;
 
 import com.ceiba.reserva.modelo.entidad.Reserva;
 import com.ceiba.tipohabitacion.modelo.entidad.TipoHabitacion;

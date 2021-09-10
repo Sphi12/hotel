@@ -6,7 +6,6 @@ import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 import com.ceiba.parqueadero.puerto.repositorio.RepositorioParqueadero;
 import com.ceiba.reserva.modelo.entidad.Reserva;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
-import com.ceiba.reserva.servicio.testdatabuilder.TipoHabitacionTestDataBuilder;
 import com.ceiba.tipohabitacion.puerto.repositorio.RepositorioTipoHabitacion;
 import com.ceiba.tipoparqueadero.puerto.repositorio.RepositorioTipoParqueadero;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;

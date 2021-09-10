@@ -28,23 +28,32 @@ public class ReservaTestDataBuilder {
 
     }
 
-    public com.ceiba.reserva.servicio.testdatabuilder.TipoHabitacionTestDataBuilder conId(Long id) {
+    public ReservaTestDataBuilder conId(Long id) {
         this.id = id;
         return this;
     }
 
-    public com.ceiba.reserva.servicio.testdatabuilder.TipoHabitacionTestDataBuilder conUsuario(Long id) {
+    public ReservaTestDataBuilder conUsuario(Long id) {
         this.idUsuario = id;
         return this;
     }
 
-    public com.ceiba.reserva.servicio.testdatabuilder.TipoHabitacionTestDataBuilder conFechaIngreso(LocalDate fecha) {
+    public ReservaTestDataBuilder conFechaIngreso(LocalDate fecha) {
         this.fechaIngreso = fecha;
         return this;
     }
 
-    public com.ceiba.reserva.servicio.testdatabuilder.TipoHabitacionTestDataBuilder conFechaSalida(LocalDate fechaSalida) {
+    public ReservaTestDataBuilder conFechaSalida(LocalDate fechaSalida) {
         this.fechaSalida = fechaSalida;
+        return this;
+    }
+
+    public ReservaTestDataBuilder conCheckIn(boolean checkIn) {
+        this.checkIn = checkIn;
+        return this;
+    }
+    public ReservaTestDataBuilder conCheckOut(boolean checkOut) {
+        this.checkOut = checkOut;
         return this;
     }
 
