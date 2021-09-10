@@ -1,1 +1,1 @@
-select count(1) from tipoHabitacion where nombre = :nombre
+select count(1) from tipoHabitacion where id = :id

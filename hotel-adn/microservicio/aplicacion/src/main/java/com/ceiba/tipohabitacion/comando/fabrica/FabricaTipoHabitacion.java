@@ -12,7 +12,7 @@ public class FabricaTipoHabitacion {
         return new TipoHabitacion(
                 comandoTipoHabitacion.getId(),
                 comandoTipoHabitacion.getNombre(),
-                comandoTipoHabitacion.getDescripción(),
+                comandoTipoHabitacion.getDescripcion(),
                 comandoTipoHabitacion.getPrecioFinSemana(),
                 comandoTipoHabitacion.getPrecioSemana(),
                 comandoTipoHabitacion.getCapacidadPersonas(),

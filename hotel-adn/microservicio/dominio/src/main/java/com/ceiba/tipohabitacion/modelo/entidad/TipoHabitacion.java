@@ -18,7 +18,7 @@ public class TipoHabitacion {
 
     private Long id;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private Double precioSemana;
     private Double precioFinSemana;
     private int capacidadPersonas;
@@ -36,7 +36,7 @@ public class TipoHabitacion {
 
         this.id = id;
         this.nombre = nombre;
-        this.descripción = descripción;
+        this.descripcion = descripción;
         this.precioSemana = precioSemana;
         this.precioFinSemana = precioFinSemana;
         this.capacidadPersonas = capacidadPersonas;

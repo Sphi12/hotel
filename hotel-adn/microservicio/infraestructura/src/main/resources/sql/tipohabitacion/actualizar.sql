@@ -1,6 +1,6 @@
 update tipoHabitacion
 set nombre = :nombre,
-	descripción = :descripción,
+	descripcion = :descripcion,
 	precioSemana = :precioSemana,
 	precioFinSemana = :precioFinSemana,
 	capacidadPersonas = :capacidadPersonas,

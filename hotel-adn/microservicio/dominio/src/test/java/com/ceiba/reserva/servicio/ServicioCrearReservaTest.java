@@ -2,7 +2,6 @@ package com.ceiba.reserva.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.habitacion.modelo.dto.DtoHabitacion;
 import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 import com.ceiba.parqueadero.puerto.repositorio.RepositorioParqueadero;
 import com.ceiba.reserva.modelo.entidad.Reserva;
@@ -108,13 +107,13 @@ public class ServicioCrearReservaTest {
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         List<DtoTipoHabitacion> habitaciones = new ArrayList<>();
         habitaciones.add(new DtoTipoHabitacion(tipoHabitacion.getId(), tipoHabitacion.getNombre(),
-                tipoHabitacion.getDescripción(), tipoHabitacion.getPrecioSemana(), tipoHabitacion.getPrecioFinSemana(),
+                tipoHabitacion.getDescripcion(), tipoHabitacion.getPrecioSemana(), tipoHabitacion.getPrecioFinSemana(),
                 tipoHabitacion.getCapacidadPersonas(), tipoHabitacion.getNumeroCamas(), tipoHabitacion.getDescripcionCamas()));
 
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         List<DtoTipoParqueadero> parqueaderoList = new ArrayList<>();
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
-                tipoParqueadero.getDescripcion(), tipoParqueadero.getPrecio()));
+                tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
 
         Mockito.when(repositorioTipoHabitacion.obtenerPorId(Mockito.anyString())).thenReturn(habitaciones);
         Mockito.when(repositorioTipoParqueadero.obtenerId(Mockito.anyString())).thenReturn(parqueaderoList);
@@ -148,13 +147,13 @@ public class ServicioCrearReservaTest {
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         List<DtoTipoHabitacion> habitaciones = new ArrayList<>();
         habitaciones.add(new DtoTipoHabitacion(tipoHabitacion.getId(), tipoHabitacion.getNombre(),
-                tipoHabitacion.getDescripción(), tipoHabitacion.getPrecioSemana(), tipoHabitacion.getPrecioFinSemana(),
+                tipoHabitacion.getDescripcion(), tipoHabitacion.getPrecioSemana(), tipoHabitacion.getPrecioFinSemana(),
                 tipoHabitacion.getCapacidadPersonas(), tipoHabitacion.getNumeroCamas(), tipoHabitacion.getDescripcionCamas()));
 
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         List<DtoTipoParqueadero> parqueaderoList = new ArrayList<>();
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
-                tipoParqueadero.getDescripcion(), tipoParqueadero.getPrecio()));
+                tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
 
         Mockito.when(repositorioTipoHabitacion.obtenerPorId(Mockito.anyString())).thenReturn(habitaciones);
         Mockito.when(repositorioTipoParqueadero.obtenerId(Mockito.anyString())).thenReturn(parqueaderoList);
@@ -189,13 +188,13 @@ public class ServicioCrearReservaTest {
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         List<DtoTipoHabitacion> habitaciones = new ArrayList<>();
         habitaciones.add(new DtoTipoHabitacion(tipoHabitacion.getId(), tipoHabitacion.getNombre(),
-                tipoHabitacion.getDescripción(), tipoHabitacion.getPrecioSemana(), tipoHabitacion.getPrecioFinSemana(),
+                tipoHabitacion.getDescripcion(), tipoHabitacion.getPrecioSemana(), tipoHabitacion.getPrecioFinSemana(),
                 tipoHabitacion.getCapacidadPersonas(), tipoHabitacion.getNumeroCamas(), tipoHabitacion.getDescripcionCamas()));
 
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         List<DtoTipoParqueadero> parqueaderoList = new ArrayList<>();
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
-                tipoParqueadero.getDescripcion(), tipoParqueadero.getPrecio()));
+                tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
 
         Mockito.when(repositorioTipoHabitacion.obtenerPorId(Mockito.anyString())).thenReturn(habitaciones);
         Mockito.when(repositorioTipoParqueadero.obtenerId(Mockito.anyString())).thenReturn(parqueaderoList);

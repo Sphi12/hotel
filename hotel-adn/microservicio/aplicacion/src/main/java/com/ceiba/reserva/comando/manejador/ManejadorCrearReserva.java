@@ -21,7 +21,6 @@ public class ManejadorCrearReserva implements ManejadorComandoRespuesta<ComandoR
     }
 
     public ComandoRespuesta<Long> ejecutar(ComandoReservaInicial comandoReservaInicial) {
-        System.out.println("COMANDO " + comandoReservaInicial.toString());
         Reserva reserva = this.fabricaReservaInicial.crear(comandoReservaInicial);
         return new ComandoRespuesta<>(this.servicioCrearReserva.ejecutar(reserva));
     }

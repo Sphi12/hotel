@@ -20,7 +20,7 @@ public class ServicioActualizarTipoHabitacion {
     }
 
     private void validarExistenciaPrevia(TipoHabitacion tipoHabitacion) {
-        boolean existe = this.repositorioTipoHabitacion.existeExcluyendoId(tipoHabitacion.getId(),tipoHabitacion.getNombre());
+        boolean existe = this.repositorioTipoHabitacion.existe(tipoHabitacion.getId());
         if(!existe) {
             throw new ExcepcionSinDatos(EL_TIPO_HAB_YA_EXISTE_EN_EL_SISTEMA);
         }

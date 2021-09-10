@@ -20,7 +20,7 @@ public class ServicioActualizarTipoParqueadero {
     }
 
     private void validarExistenciaPrevia(TipoParqueadero tipoParqueadero) {
-        boolean existe = this.repositorioTipoParqueadero.existeExcluyendoId(tipoParqueadero.getId(),tipoParqueadero.getNombre());
+        boolean existe = this.repositorioTipoParqueadero.existe(tipoParqueadero.getId());
         if(!existe) {
             throw new ExcepcionDuplicidad(EL_TIPO_PARQUEADERO_YA_EXISTE_EN_EL_SISTEMA);
         }

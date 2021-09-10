@@ -17,7 +17,7 @@ public class ServicioActualizarTipoParqueaderoTest {
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         // arrange
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
-        Mockito.when(repositorioTipoParqueadero.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioTipoParqueadero.existe(Mockito.anyLong())).thenReturn(false);
         ServicioActualizarTipoParqueadero servicioActualizarTipoParqueadero = new ServicioActualizarTipoParqueadero(repositorioTipoParqueadero);
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarTipoParqueadero.ejecutar(tipoParqueadero), ExcepcionDuplicidad.class, "El tipo parqueadero no existe en el sistema");

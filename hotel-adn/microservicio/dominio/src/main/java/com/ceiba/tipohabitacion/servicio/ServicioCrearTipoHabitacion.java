@@ -21,7 +21,7 @@ public class ServicioCrearTipoHabitacion {
     }
 
     private void validarExistenciaPrevia(TipoHabitacion tipoHabitacion) {
-        boolean existe = this.repositorioUsuario.existe(tipoHabitacion.getNombre());
+        boolean existe = this.repositorioUsuario.existe(tipoHabitacion.getId());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_TIPO_HAB_YA_EXISTE_EN_EL_SISTEMA);
         }
