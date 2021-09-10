@@ -42,9 +42,6 @@ public class ConsultaControladorReservaTest {
                 .andExpect(jsonPath("$[0].idParqueadero", is(1)))
                 .andExpect(jsonPath("$[0].tipoParqueadero", is("carro")))
                 .andExpect(jsonPath("$[0].idUsuario", is(1)))
-                .andExpect(jsonPath("$[0].fechaReserva", is("2021-09-02 00:49:53")))
-                .andExpect(jsonPath("$[0].fechaIngreso", is("2021-09-03")))
-                .andExpect(jsonPath("$[0].fechaSalida", is("2021-09-07")))
                 .andExpect(jsonPath("$[0].precioTotal", is(451800.0)))
                 .andExpect(jsonPath("$[0].checkIn", is(false)))
                 .andExpect(jsonPath("$[0].checkOut", is(false)));
@@ -66,9 +63,6 @@ public class ConsultaControladorReservaTest {
                 .andExpect(jsonPath("$.idParqueadero", is(1)))
                 .andExpect(jsonPath("$.tipoParqueadero", is("carro")))
                 .andExpect(jsonPath("$.idUsuario", is(1)))
-                .andExpect(jsonPath("$.fechaReserva", is("2021-09-02 00:49:53")))
-                .andExpect(jsonPath("$.fechaIngreso", is("2021-09-03")))
-                .andExpect(jsonPath("$.fechaSalida", is("2021-09-07")))
                 .andExpect(jsonPath("$.precioTotal", is(451800.0)))
                 .andExpect(jsonPath("$.checkIn", is(false)))
                 .andExpect(jsonPath("$.checkOut", is(false)));

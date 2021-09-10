@@ -1,10 +1,11 @@
 package com.ceiba.usuario.controlador;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.parqueadero.comando.ComandoParqueadero;
+import com.ceiba.parqueadero.servicio.testdatabuilder.ComandoParqueaderoTestDataBuilder;
 import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.servicio.testdatabuilder.ComandoUsuarioTestDataBuilder;
 import org.junit.Test;
@@ -28,12 +29,26 @@ public class ComandoControladorUsuarioTest {
     @Autowired
     private MockMvc mocMvc;
 
+    @Test
+    public void crear() throws Exception{
+        // arrange
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
+
+        // act - assert
+        mocMvc.perform(post("/usuarios")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(usuario)))
+                .andExpect(status().isOk());
+        //    .andExpect(content().json("{'valor': 2}"));
+
+    }
+
 
 
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 1L;
+        Long id = 3L;
         ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
 
         // act - assert
@@ -46,7 +61,7 @@ public class ComandoControladorUsuarioTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 3L;
 
         // act - assert
         mocMvc.perform(delete("/usuarios/{id}",id)

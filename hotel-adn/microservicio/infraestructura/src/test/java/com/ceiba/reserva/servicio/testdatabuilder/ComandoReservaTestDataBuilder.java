@@ -3,9 +3,11 @@ package com.ceiba.reserva.servicio.testdatabuilder;
 import com.ceiba.reserva.comando.ComandoReserva;
 import com.ceiba.reserva.comando.ComandoReservaInicial;
 import org.apache.tomcat.jni.Local;
+import org.apache.tomcat.jni.Time;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class ComandoReservaTestDataBuilder {
 
@@ -29,10 +31,10 @@ public class ComandoReservaTestDataBuilder {
         idParqueadero = 1L;
         tipoParqueadero = "carro";
         idUsuario = 1L;
-        fechaIngreso = LocalDate.of(2021, 9, 21);
-        fechaSalida = LocalDate.of(2021, 9, 26);
+        fechaIngreso = LocalDate.of(2021, 9, 3);
+        fechaSalida = LocalDate.of(2021, 9, 6);
         fechaReserva = LocalDateTime.now();
-        precioTotal = 489000.0;
+        precioTotal = 451800.0;
         checkIn = false;
         checkOut = false;
     }

@@ -40,7 +40,13 @@ public class ConsultaControladorUsuarioTest {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].nombre", is("test")))
                 .andExpect(jsonPath("$[0].clave", is("1234")))
-                .andExpect(jsonPath("$[0].fechaCreacion", is("2021-09-09")));
+                .andExpect(jsonPath("$[0].fechaCreacion", is("2021-09-10")))
+
+
+                .andExpect(jsonPath("$[1].id", is(109)))
+                .andExpect(jsonPath("$[1].nombre", is("Sophia")))
+                .andExpect(jsonPath("$[1].clave", is("1234")))
+                .andExpect(jsonPath("$[1].fechaCreacion", is("2021-09-10")));
         ;
     }
 }
