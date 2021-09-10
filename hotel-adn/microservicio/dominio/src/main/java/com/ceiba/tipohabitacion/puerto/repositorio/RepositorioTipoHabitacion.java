@@ -11,26 +11,26 @@ public interface RepositorioTipoHabitacion {
      * @param tipoHabitacion
      * @return el id generado
      */
-    Long crear(TipoHabitacion tipoHabitacion);
+    Long crearTipoHabitacion(TipoHabitacion tipoHabitacion);
 
     /**
      * Permite actualizar un tipoHabitacion
      * @param tipoHabitacion
      */
-    void actualizar(TipoHabitacion tipoHabitacion);
+    void actualizarTipoHabitacion(TipoHabitacion tipoHabitacion);
 
     /**
      * Permite eliminar un usuario
      * @param id
      */
-    void eliminar(Long id);
+    void eliminarTipoHabitacion(Long id);
 
     /**
      * Permite validar si existe un tipoHabitacion con un nombre
      * @param id
      * @return si existe o no
      */
-    boolean existe(Long id);
+    boolean existeTipoHabitacion(Long id);
 
     /**
      * Permite validar si existe un tipoHabitacion con un nombre excluyendo un id

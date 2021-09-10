@@ -17,51 +17,51 @@ public class RepositorioTipoHabitacionMysql implements RepositorioTipoHabitacion
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="tipohabitacion", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearTipoHabitacion;
 
     @SqlStatement(namespace="tipohabitacion", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarTipoHabitacion;
 
     @SqlStatement(namespace="tipohabitacion", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarTipoHabitacion;
 
     @SqlStatement(namespace="tipohabitacion", value="existe")
-    private static String sqlExiste;
+    private static String sqlExisteTipoHabitacion;
 
     @SqlStatement(namespace="tipohabitacion", value="existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+    private static String sqlExisteExcluyendoIdTipoHabitacion;
 
     @SqlStatement(namespace="tipohabitacion", value="obtenerPorId")
-    private static String sqlObtenerPorId;
+    private static String sqlObtenerPorIdTipoHabitacion;
 
     public RepositorioTipoHabitacionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(TipoHabitacion tipoHabitacion) {
-        return this.customNamedParameterJdbcTemplate.crear(tipoHabitacion, sqlCrear);
+    public Long crearTipoHabitacion(TipoHabitacion tipoHabitacion) {
+        return this.customNamedParameterJdbcTemplate.crear(tipoHabitacion, sqlCrearTipoHabitacion);
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminarTipoHabitacion(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarTipoHabitacion, paramSource);
     }
 
     @Override
-    public boolean existe(Long id) {
+    public boolean existeTipoHabitacion(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTipoHabitacion,paramSource, Boolean.class);
     }
 
     @Override
-    public void actualizar(TipoHabitacion tipoHabitacion) {
-        this.customNamedParameterJdbcTemplate.actualizar(tipoHabitacion, sqlActualizar);
+    public void actualizarTipoHabitacion(TipoHabitacion tipoHabitacion) {
+        this.customNamedParameterJdbcTemplate.actualizar(tipoHabitacion, sqlActualizarTipoHabitacion);
     }
 
     @Override
@@ -70,13 +70,13 @@ public class RepositorioTipoHabitacionMysql implements RepositorioTipoHabitacion
         paramSource.addValue("id", id);
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoIdTipoHabitacion,paramSource, Boolean.class);
     }
 
     @Override
     public List<DtoTipoHabitacion> obtenerPorId(String nombre) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", nombre);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerPorId, paramSource, new MapeoTipoHabitacion());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerPorIdTipoHabitacion, paramSource, new MapeoTipoHabitacion());
     }
 }

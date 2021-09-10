@@ -17,11 +17,11 @@ public class ServicioCrearTipoHabitacion {
 
     public Long ejecutar(TipoHabitacion tipoHabitacion) {
         validarExistenciaPrevia(tipoHabitacion);
-        return this.repositorioUsuario.crear(tipoHabitacion);
+        return this.repositorioUsuario.crearTipoHabitacion(tipoHabitacion);
     }
 
     private void validarExistenciaPrevia(TipoHabitacion tipoHabitacion) {
-        boolean existe = this.repositorioUsuario.existe(tipoHabitacion.getId());
+        boolean existe = this.repositorioUsuario.existeTipoHabitacion(tipoHabitacion.getId());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_TIPO_HAB_YA_EXISTE_EN_EL_SISTEMA);
         }

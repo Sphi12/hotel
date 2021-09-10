@@ -11,6 +11,6 @@ public class ServicioEliminarTipoHabitacion {
     }
 
     public void ejecutar(Long id) {
-        this.repositorioTipoHabitacion.eliminar(id);
+        this.repositorioTipoHabitacion.eliminarTipoHabitacion(id);
     }
 }

@@ -1,7 +1,6 @@
 package com.ceiba.tipoHabitacion.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.tipoHabitacion.servicio.testdatabuilder.TipoHabitacionTestDataBuilder;
 import com.ceiba.tipohabitacion.modelo.entidad.TipoHabitacion;
@@ -18,7 +17,7 @@ public class ServicioActualizarTipoHabitacionTest {
         TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
         // arrange
         RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
-        Mockito.when(repositorioTipoHabitacion.existe(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioTipoHabitacion.existeTipoHabitacion(Mockito.anyLong())).thenReturn(false);
         ServicioActualizarTipoHabitacion servicioActualizarTipoHabitacion = new ServicioActualizarTipoHabitacion(repositorioTipoHabitacion);
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarTipoHabitacion.ejecutar(tipoHabitacion), ExcepcionSinDatos.class, "El tipo de habitacion no existe en el sistema");
