@@ -6,7 +6,6 @@ import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 import com.ceiba.parqueadero.puerto.repositorio.RepositorioParqueadero;
 import com.ceiba.reserva.modelo.entidad.Reserva;
-import com.ceiba.reserva.modelo.entidad.ReservaInicial;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
 import com.ceiba.tipohabitacion.puerto.repositorio.RepositorioTipoHabitacion;

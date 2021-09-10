@@ -1,10 +1,10 @@
 package com.ceiba.habitacion.adaptador.repositorio;
+import com.ceiba.habitacion.adaptador.dao.MapeoHabitacion;
 import com.ceiba.habitacion.modelo.dto.DtoHabitacion;
 import com.ceiba.habitacion.modelo.entidad.Habitacion;
 import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.usuario.adaptador.dao.MapeoHabitacion;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;

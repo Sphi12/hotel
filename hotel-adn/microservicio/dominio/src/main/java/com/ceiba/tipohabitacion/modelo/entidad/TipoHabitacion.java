@@ -3,7 +3,6 @@ package com.ceiba.tipohabitacion.modelo.entidad;
 
 import lombok.Getter;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter

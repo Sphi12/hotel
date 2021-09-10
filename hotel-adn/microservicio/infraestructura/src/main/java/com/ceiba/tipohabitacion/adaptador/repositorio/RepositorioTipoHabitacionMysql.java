@@ -6,8 +6,6 @@ import com.ceiba.tipohabitacion.adaptador.dao.MapeoTipoHabitacion;
 import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
 import com.ceiba.tipohabitacion.modelo.entidad.TipoHabitacion;
 import com.ceiba.tipohabitacion.puerto.repositorio.RepositorioTipoHabitacion;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 

@@ -6,8 +6,6 @@ import com.ceiba.habitacion.modelo.dto.DtoHabitacion;
 import com.ceiba.habitacion.puerto.dao.DaoHabitacion;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.usuario.adaptador.dao.MapeoHabitacion;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 

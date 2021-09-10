@@ -1,6 +1,5 @@
 package com.ceiba.reserva.comando.fabrica;
 import com.ceiba.reserva.comando.ComandoReserva;
-import com.ceiba.reserva.comando.ComandoReservaInicial;
 import com.ceiba.reserva.modelo.entidad.Reserva;
 import org.springframework.stereotype.Component;
 

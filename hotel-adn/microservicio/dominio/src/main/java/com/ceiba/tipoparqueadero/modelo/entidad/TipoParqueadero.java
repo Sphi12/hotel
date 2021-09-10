@@ -1,7 +1,6 @@
 package com.ceiba.tipoparqueadero.modelo.entidad;
 
 import lombok.Getter;
-import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter

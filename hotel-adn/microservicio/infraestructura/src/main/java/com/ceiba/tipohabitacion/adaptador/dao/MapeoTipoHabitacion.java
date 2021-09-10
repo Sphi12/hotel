@@ -2,11 +2,9 @@ package com.ceiba.tipohabitacion.adaptador.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import org.springframework.jdbc.core.RowMapper;
 
 public class MapeoTipoHabitacion implements RowMapper<DtoTipoHabitacion>, MapperResult {

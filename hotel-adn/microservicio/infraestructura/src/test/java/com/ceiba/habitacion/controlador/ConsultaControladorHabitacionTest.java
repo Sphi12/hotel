@@ -1,8 +1,6 @@
 package com.ceiba.habitacion.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.reserva.controlador.ConsultaControladorReserva;
-import com.ceiba.usuario.controlador.ConsultaControladorHabitacion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

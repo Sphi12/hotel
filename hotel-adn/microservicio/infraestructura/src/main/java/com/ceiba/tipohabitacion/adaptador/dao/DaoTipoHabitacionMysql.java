@@ -6,11 +6,8 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
 import com.ceiba.tipohabitacion.puerto.dao.DaoTipoHabitacion;
-import com.ceiba.usuario.puerto.dao.DaoUsuario;
 
 import org.springframework.stereotype.Component;
-
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
 
 @Component
 public class DaoTipoHabitacionMysql implements DaoTipoHabitacion {

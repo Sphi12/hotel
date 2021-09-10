@@ -1,6 +1,5 @@
 package com.ceiba.habitacion.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.habitacion.modelo.entidad.Habitacion;
 import com.ceiba.habitacion.puerto.repositorio.RepositorioHabitacion;
