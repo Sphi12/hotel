@@ -138,9 +138,13 @@ public class ServicioCrearReserva {
         while (fechaAuxiliar.isBefore(reserva.getFechaSalida())) {
             if (fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
                     fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-                precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
+                if(tipoHabitacion.getPrecioFinSemana() != null) {
+                    precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
+                }
             } else {
-                precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioSemana();
+                if(tipoHabitacion.getPrecioSemana() != null) {
+                    precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioSemana();
+                }
             }
             fechaAuxiliar = fechaAuxiliar.plusDays(1);
         }
@@ -149,21 +153,25 @@ public class ServicioCrearReserva {
     }
 
     private Double obtenerPrecioTotalParqueadero(Reserva reserva, int cantidadDias) {
-        return obtenertipoParqueadero(reserva.getTipoParqueadero()).getPrecio() * cantidadDias;
+        DtoTipoParqueadero parqueadero = obtenertipoParqueadero(reserva.getTipoParqueadero());
+        if(parqueadero != null) {
+            return parqueadero.getPrecio() * cantidadDias;
+        }
+        return 0.0;
     }
 
     private DtoTipoHabitacion obtenertipoHabitacion(String tipoHabitacion) {
         List<DtoTipoHabitacion> tipoHabitacionList = this.repositorioTipoHabitacion.obtenerPorId(tipoHabitacion);
-        for (DtoTipoHabitacion tipoHab : tipoHabitacionList) {
-            return tipoHab;
+        if(!tipoHabitacionList.isEmpty() && tipoHabitacionList.size()>0){
+            return tipoHabitacionList.get(0);
         }
         return null;
     }
 
     private DtoTipoParqueadero obtenertipoParqueadero(String tipoParqueadero) {
         List<DtoTipoParqueadero> tipoParqueaderoList = this.repositorioTipoParqueadero.obtenerId(tipoParqueadero);
-        for (DtoTipoParqueadero tipoPar : tipoParqueaderoList) {
-            return tipoPar;
+        if(!tipoParqueaderoList.isEmpty() && tipoParqueaderoList.size() > 0){
+            return tipoParqueaderoList.get(0);
         }
         return null;
     }
