@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row justify-content-center">
+        <h2>Reservas</h2>
+    </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover" style="width:50% ;">	  
+      <thead>
+		<tr>
+		  <th scope="col">id</th>
+		  <th scope="col">Tipo habitacion</th>
+		  <th scope="col">Tipo parqueadero</th>
+		  <th scope="col">Id usuario</th>
+		  <th scope="col">Fecha reserva</th>
+		  <th scope="col">Fecha ingreso</th>
+		  <th scope="col">Fecha salida</th>
+		  <th scope="col">Precio total</th>
+		  <th scope="col">Check-in</th>
+		  <th scope="col">Check-out</th>
+		</tr>
+	  </thead>
+	 <tbody>
+      <tr *ngFor="let item of listaReserva | async; index as i" class="reserva">
+        <td>{{item.id}}</td>
+        <td>{{item.tipoHabitacion}}</td>
+        <td>{{item.tipoParqueadero}}</td>
+        <td>{{item.idUsuario}}</td>
+        <td>{{item.fechaReserva}}</td>
+        <td>{{item.fechaIngreso}}</td>
+		<td>{{item.fechaSalida}}</td>
+		<td>{{item.precioTotal}}</td>
+		<td>{{item.checkIn}}</td>
+		<td>{{item.checkOut}}</td>
+		<td> <a (click)="hacerCheckIn(item)" class="btn btn-secondary">Check-in</a></td>
+		<td> <a (click)="hacerCheckOut(item)" class="btn btn-secondary">Check-out</a></td>
+      </tr>
+	  
+    </tbody>
+	</table>
+</div>
+</div>

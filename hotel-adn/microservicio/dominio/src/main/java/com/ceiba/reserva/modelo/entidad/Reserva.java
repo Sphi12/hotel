@@ -31,7 +31,7 @@ public class Reserva {
     private static final String TIPO_HABITACION_INVALIDO = "Tipo de habitacion invalido, debe ingresar: individual o doble o cuadruples";
     private static final String TIPO_PARQUEADERO_INVALIDO = "Tipo de parqueadero invalido, debe ingresar: moto o carro o bicicleta";
     private static final String FECHA_INGRESO_INCORRECTA = "La fecha de ingreso debe ser menor o igual a la fecha salida" ;
-    
+
     private Long id;
     private Long idHabitacion;
     private String tipoHabitacion;

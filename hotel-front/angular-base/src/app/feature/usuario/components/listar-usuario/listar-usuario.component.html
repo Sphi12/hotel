@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row justify-content-center">
+        <h2>Usuarios</h2>
+    </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover" style="width:50% ;">	  
+      <thead>
+		<tr>
+		  <th scope="col">Identificacion</th>
+		  <th scope="col">nombre</th>
+		  <th scope="col">Fecha creacion</th>
+		</tr>
+	  </thead>
+	 <tbody>
+      <tr *ngFor="let item of listaUsuario | async; index as i" class="reserva">
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.fechaCreacion}}</td>
+      </tr>
+	  
+    </tbody>
+	</table>
+</div>
+</div>

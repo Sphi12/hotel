@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <h2>Crear parqueadero</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <form [formGroup]="envioForm" #ngForm="ngForm" (ngSubmit)="crear()">
+
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Tipo parqueadero:</label>
+                </div>
+                <div class="col-sm-8">
+                    <select id="idTipoParqueadero" name="idTipoParqueadero" formControlName="idTipoParqueadero"
+                        class="form-control">
+                        <option>Seleccione el tipo de parqueadero</option>
+                        <option *ngFor="let parqueadero of tiposParqueaderoList" [value]="parqueadero.id">{{parqueadero.estado}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-5">
+
+                <div class="col-sm-3 col-12">
+                </div>
+                <div class="col-sm-3 col-12">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="envioForm.invalid">Crear</button>
+                </div>
+                <div class="col-sm-3 col-12">
+                    <button type="reset" class="btn btn-danger btn-lg btn-block">Reset formulario</button>
+                </div>
+                <div class="col-sm-3 col-12">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

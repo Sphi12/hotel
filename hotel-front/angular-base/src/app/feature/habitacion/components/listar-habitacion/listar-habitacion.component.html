@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row justify-content-center">
+        <h2>Habitaciones</h2>
+    </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover" style="width:50% ;">	  
+      <thead>
+		<tr>
+		  <th scope="col">id</th>
+		  <th scope="col">Tipo habitacion</th>
+		  <th scope="col">disponible</th>
+		</tr>
+	  </thead>
+	 <tbody>
+      <tr *ngFor="let item of listaHabitacion | async; index as i" class="reserva">
+        <td>{{item.id}}</td>
+        <td>{{item.tipo}}</td>
+        <td>{{item.disponible}}</td>
+      </tr>
+	  
+    </tbody>
+	</table>
+</div>
+
+<div class="row justify-content-center">
+  <h2>Tips de Habitacion</h2>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover" style="width:50% ;">	  
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio semana</th>
+        <th scope="col">Precio fin de semana</th>
+        <th scope="col">Capacidad personas</th>
+        <th scope="col">Mumero camas</th>
+        <th scope="col">Descripcion camas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listatipoHabitacion | async; index as i" class="tipoHabitacion">
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.descripcion}}</td>
+        <td>{{item.precioSemana}}</td>
+        <td>{{item.precioFinSemana}}</td>
+        <td>{{item.capacidadPersonas}}</td>
+        <td>{{item.numeroCamas}}</td>
+        <td>{{item.descripcionCamas}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>

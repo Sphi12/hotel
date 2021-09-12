@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RESERVA</a>
+     
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="./crear" routerLinkActive="active">Crear Reserva</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="./listar" routerLinkActive="active">Listar reservas</a>
+        </li>
+    
+      </ul>
+
+     
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Id reserva" aria-label="IdReserva" id="id">
+        <button class="btn btn-outline-success" type="submit"  (ngSubmit)="navegarABuscar(id)" >Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+
+<router-outlet></router-outlet>
