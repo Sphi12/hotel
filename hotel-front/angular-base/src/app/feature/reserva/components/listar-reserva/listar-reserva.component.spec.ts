@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { Reserva } from '../../shared/model/reserva';
 import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
 
-describe('ListarSolicitudComponent', () => {
+describe('ListarReservaComponent', () => {
   let component: ListarReservaComponent;
   let fixture: ComponentFixture<ListarReservaComponent>;
   let reservaService: ReservaService;

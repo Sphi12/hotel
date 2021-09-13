@@ -3,15 +3,11 @@ package com.ceiba.habitacion.controlador;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.habitacion.comando.ComandoHabitacion;
 import com.ceiba.habitacion.servicio.testdatabuilder.ComandoHabitacionTestDataBuilder;
-import com.ceiba.reserva.comando.ComandoReserva;
-import com.ceiba.reserva.comando.ComandoReservaInicial;
-import com.ceiba.reserva.servicio.testdatabuilder.ComandoReservaTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

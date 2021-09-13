@@ -20,5 +20,5 @@ spring:
       hikari:
          poolName: pool
 
-profiles:
-   active: docker
+#profiles:
+ #  active: docker
