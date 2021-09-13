@@ -39,7 +39,7 @@ export class CrearUsuarioComponent implements OnInit {
             (e) => {
               console.log(e.error.mensaje);
               this.modalNotificaciones.modalBasico(
-                `No se puedo crear la reserva ${e.error.mensaje}`,
+                `No se puedo crear el usuario ${e.error.mensaje}`,
                 'warning'
               );
             }

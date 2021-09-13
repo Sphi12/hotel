@@ -16,10 +16,10 @@ describe('workspace-project Usuario', () => {
     });
 
     it('Deberia crear usuario', () => {
-        const ID = '001';
+        const ID = '123498765';
         const NOMBRE = 'Usuario de pruebas';
         const CLAVE = '1234';
-        const FECHA_INGRESO = '2021-09-13';
+        const FECHA_INGRESO = '09/13/2021';
 
         page.navigateTo();
         navBar.clickUsuario();
@@ -33,11 +33,11 @@ describe('workspace-project Usuario', () => {
 
         console.log("3")
 
-        browser.sleep(1000);
+        browser.sleep(5000);
         usuario.clickBotonCrear();
         console.log("4")
-        browser.sleep(1000);
-        expect(usuario.obtenerTextoSweetAlert()).toEqual('Se creo el usuario');
+        browser.sleep(3000);
+        expect(usuario.obtenerTextoSweetAlert()).toContain('Se creo el usuario');
         console.log("5")
         });
 });
