@@ -119,7 +119,7 @@ public class ServicioCrearReserva {
 
         int diasEstadia = (int)(DAYS.between(reserva.getFechaIngreso(), reserva.getFechaSalida()));
 
-        Double precioTotal = 0.0;
+        Double precioTotal;
         if (!parqueadero) {
             precioTotal = obtenerPrecioTotalHabitacion(reserva);
         } else {
