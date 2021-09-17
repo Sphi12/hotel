@@ -38,7 +38,7 @@ create table IF NOT EXISTS tipoHabitacion (
 create table IF NOT EXISTS tipoParqueadero (
  id int(11) not null auto_increment,
  nombre varchar(100) not null,
- descripción varchar(100) not null,
+ descripcion varchar(100) not null,
  precio DOUBLE not null,
  primary key (id)
 )ENGINE = InnoDB;

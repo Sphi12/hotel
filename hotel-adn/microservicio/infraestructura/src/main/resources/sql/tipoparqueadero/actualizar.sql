@@ -1,5 +1,5 @@
 update tipoParqueadero
 set nombre = :nombre,
-	descripción = :descripcion,
+	descripcion = :descripcion,
 	precio = :precio,
 where id = :id
