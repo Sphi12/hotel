@@ -13,11 +13,11 @@ public class MapeoParqueadero implements RowMapper<DtoParqueadero>, MapperResult
     public DtoParqueadero mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         Long id = resultSet.getLong("id");
-        Long TipoParqueadero = resultSet.getLong("id");
+        Long tipoParqueadero = resultSet.getLong("id");
         boolean disponible = resultSet.getBoolean("disponible");
 
 
-        return new DtoParqueadero(id,TipoParqueadero,disponible);
+        return new DtoParqueadero(id,tipoParqueadero,disponible);
     }
 
 }
