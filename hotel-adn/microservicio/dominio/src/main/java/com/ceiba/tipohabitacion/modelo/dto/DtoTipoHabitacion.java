@@ -8,7 +8,7 @@ import lombok.Getter;
 public class DtoTipoHabitacion {
     private Long id;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private Double precioSemana;
     private Double precioFinSemana;
     private int capacidadPersonas;

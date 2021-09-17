@@ -25,7 +25,7 @@ public class TipoHabitacion {
     private int numeroCamas;
     private String descripcionCamas;
 
-    public TipoHabitacion(Long id, String nombre, String descripción, Double precioFinSemana, Double precioSemana,
+    public TipoHabitacion(Long id, String nombre, String descripcion, Double precioFinSemana, Double precioSemana,
                           int capacidadPersonas, int numeroCamas, String descripcionCamas) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_TIPO_HABITACION);
         validarObligatorio(precioSemana, SE_DEBE_INGRESAR_PRECIO_SEMANA);
@@ -36,7 +36,7 @@ public class TipoHabitacion {
 
         this.id = id;
         this.nombre = nombre;
-        this.descripcion = descripción;
+        this.descripcion = descripcion;
         this.precioSemana = precioSemana;
         this.precioFinSemana = precioFinSemana;
         this.capacidadPersonas = capacidadPersonas;

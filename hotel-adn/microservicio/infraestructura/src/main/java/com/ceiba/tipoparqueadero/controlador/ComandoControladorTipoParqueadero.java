@@ -1,7 +1,6 @@
 package com.ceiba.tipoparqueadero.controlador;
 
 import com.ceiba.ComandoRespuesta;
-import com.ceiba.tipohabitacion.comando.ComandoTipoHabitacion;
 import com.ceiba.tipoparqueadero.comando.ComandoTipoParqueadero;
 import com.ceiba.tipoparqueadero.comando.manejador.ManejadorCrearTipoParqueadero;
 import com.ceiba.tipoparqueadero.comando.manejador.ManejadorEliminarTipoParqueadero;

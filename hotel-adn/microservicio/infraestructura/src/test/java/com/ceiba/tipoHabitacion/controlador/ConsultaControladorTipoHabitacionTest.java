@@ -36,7 +36,7 @@ public class ConsultaControladorTipoHabitacionTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].nombre", is("individual")))
-                .andExpect(jsonPath("$[0].descripción", is("Habitacion individual")))
+                .andExpect(jsonPath("$[0].descripcion", is("Habitacion individual")))
                 .andExpect(jsonPath("$[0].precioSemana", is(90000.0)))
                 .andExpect(jsonPath("$[0].precioFinSemana", is(110000.0)))
                 .andExpect(jsonPath("$[0].capacidadPersonas", is(1)))

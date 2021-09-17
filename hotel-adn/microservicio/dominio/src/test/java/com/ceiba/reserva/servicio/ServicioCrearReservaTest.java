@@ -118,7 +118,7 @@ public class ServicioCrearReservaTest {
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         List<DtoTipoParqueadero> parqueaderoList = new ArrayList<>();
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
-                tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
+                tipoParqueadero.getDescripcion(), tipoParqueadero.getPrecio()));
 
         Mockito.when(repositorioTipoHabitacion.obtenerPorIdTHabitacion(Mockito.anyString())).thenReturn(habitaciones);
         Mockito.when(repositorioTipoParqueadero.obtenerIdTParqueadero(Mockito.anyString())).thenReturn(parqueaderoList);
@@ -159,7 +159,7 @@ public class ServicioCrearReservaTest {
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         List<DtoTipoParqueadero> parqueaderoList = new ArrayList<>();
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
-                tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
+                tipoParqueadero.getDescripcion(), tipoParqueadero.getPrecio()));
 
         Mockito.when(repositorioTipoHabitacion.obtenerPorIdTHabitacion(Mockito.anyString())).thenReturn(habitaciones);
         Mockito.when(repositorioTipoParqueadero.obtenerIdTParqueadero(Mockito.anyString())).thenReturn(parqueaderoList);
@@ -201,7 +201,7 @@ public class ServicioCrearReservaTest {
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         List<DtoTipoParqueadero> parqueaderoList = new ArrayList<>();
         parqueaderoList.add(new DtoTipoParqueadero(tipoParqueadero.getId(), tipoParqueadero.getNombre(),
-                tipoParqueadero.getDescripción(), tipoParqueadero.getPrecio()));
+                tipoParqueadero.getDescripcion(), tipoParqueadero.getPrecio()));
 
         Mockito.when(repositorioTipoHabitacion.obtenerPorIdTHabitacion(Mockito.anyString())).thenReturn(habitaciones);
         Mockito.when(repositorioTipoParqueadero.obtenerIdTParqueadero(Mockito.anyString())).thenReturn(parqueaderoList);

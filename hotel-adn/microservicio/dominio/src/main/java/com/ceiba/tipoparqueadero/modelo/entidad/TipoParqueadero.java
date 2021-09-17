@@ -15,7 +15,7 @@ public class TipoParqueadero {
 
     private Long id;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private Double precio;
 
     public TipoParqueadero(Long id,String nombre, String descripcion,Double precio) {
@@ -25,7 +25,7 @@ public class TipoParqueadero {
 
         this.id = id;
         this.nombre = nombre;
-        this.descripción = descripcion;
+        this.descripcion = descripcion;
         this.precio = precio;
     }
 

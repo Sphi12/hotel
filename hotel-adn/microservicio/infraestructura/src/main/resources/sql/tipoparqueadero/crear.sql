@@ -1,1 +1,1 @@
-insert into tipoParqueadero (nombre, descripción,precio) values (:nombre, :descripción, :precio)
+insert into tipoParqueadero (nombre, descripción,precio) values (:nombre, :descripcion, :precio)
