@@ -13,8 +13,6 @@ public class ComandoUsuarioTestDataBuilder {
     private LocalDate fechaCreacion;
 
     public ComandoUsuarioTestDataBuilder() {
-        id = 3L;
-        nombre = "Erika sophia";
         clave = "1234";
         fechaCreacion = LocalDate.now();
     }
@@ -24,6 +22,10 @@ public class ComandoUsuarioTestDataBuilder {
         return this;
     }
 
+    public ComandoUsuarioTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
     public ComandoUsuario build() {
         return new ComandoUsuario(id,nombre, clave,fechaCreacion);
     }

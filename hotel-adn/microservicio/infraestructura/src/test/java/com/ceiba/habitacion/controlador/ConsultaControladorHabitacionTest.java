@@ -36,10 +36,7 @@ public class ConsultaControladorHabitacionTest {
                 .andExpect(jsonPath("$[0].tipo", is(1)))
 
                 .andExpect(jsonPath("$[1].id", is(2)))
-                .andExpect(jsonPath("$[1].tipo", is(1)))
-
-                .andExpect(jsonPath("$[2].id", is(3)))
-                .andExpect(jsonPath("$[2].tipo", is(1)));
+                .andExpect(jsonPath("$[1].tipo", is(1)));
 
     }
 

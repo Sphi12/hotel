@@ -135,17 +135,14 @@ public class ServicioCrearReserva {
         Double precioTotalHabitacion = 0.0;
         DtoTipoHabitacion tipoHabitacion = obtenertipoHabitacion(reserva.getTipoHabitacion());
         LocalDate fechaAuxiliar = reserva.getFechaIngreso();
-        if(tipoHabitacion != null) {
+        if (tipoHabitacion != null && tipoHabitacion.getPrecioFinSemana() != null
+                && tipoHabitacion.getPrecioSemana() != null) {
             while (fechaAuxiliar.isBefore(reserva.getFechaSalida())) {
                 if (fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
                         fechaAuxiliar.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-                    if (tipoHabitacion.getPrecioFinSemana() != null) {
-                        precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
-                    }
+                    precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioFinSemana();
                 } else {
-                    if (tipoHabitacion.getPrecioSemana() != null) {
-                        precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioSemana();
-                    }
+                    precioTotalHabitacion = precioTotalHabitacion + tipoHabitacion.getPrecioSemana();
                 }
                 fechaAuxiliar = fechaAuxiliar.plusDays(1);
             }
@@ -155,7 +152,7 @@ public class ServicioCrearReserva {
 
     private Double obtenerPrecioTotalParqueadero(Reserva reserva, int cantidadDias) {
         DtoTipoParqueadero parqueadero = obtenertipoParqueadero(reserva.getTipoParqueadero());
-        if(parqueadero != null) {
+        if (parqueadero != null) {
             return parqueadero.getPrecio() * cantidadDias;
         }
         return 0.0;
@@ -163,7 +160,7 @@ public class ServicioCrearReserva {
 
     private DtoTipoHabitacion obtenertipoHabitacion(String tipoHabitacion) {
         List<DtoTipoHabitacion> tipoHabitacionList = this.repositorioTipoHabitacion.obtenerPorIdTHabitacion(tipoHabitacion);
-        if(!tipoHabitacionList.isEmpty() && tipoHabitacionList.size()>0){
+        if (!tipoHabitacionList.isEmpty() && tipoHabitacionList.size() > 0) {
             return tipoHabitacionList.get(0);
         }
         return null;
@@ -171,7 +168,7 @@ public class ServicioCrearReserva {
 
     private DtoTipoParqueadero obtenertipoParqueadero(String tipoParqueadero) {
         List<DtoTipoParqueadero> tipoParqueaderoList = this.repositorioTipoParqueadero.obtenerIdTParqueadero(tipoParqueadero);
-        if(!tipoParqueaderoList.isEmpty() && tipoParqueaderoList.size() > 0){
+        if (!tipoParqueaderoList.isEmpty() && tipoParqueaderoList.size() > 0) {
             return tipoParqueaderoList.get(0);
         }
         return null;

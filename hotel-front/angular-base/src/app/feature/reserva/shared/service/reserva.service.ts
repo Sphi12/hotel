@@ -37,7 +37,6 @@ export class ReservaService {
   }
 
   public editar(reserva: Reserva) {
-    console.log(reserva.id + ' ' + reserva.checkIn)
     return this.http.doPut<any, any>(
       `${environment.endpoint}/reservas/${reserva.id}`,
       reserva,
@@ -47,7 +46,6 @@ export class ReservaService {
 
 
   public eliminar(reserva: Reserva) {
-    
     return this.http.doPut<any, any>(
       `${environment.endpoint}/api/v1/solicitudes/${reserva.id}`,
       reserva,

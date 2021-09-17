@@ -5,8 +5,12 @@ import com.ceiba.tipoHabitacion.servicio.testdatabuilder.ComandoTipoHabitacionTe
 import com.ceiba.tipoParqueadero.servicio.testdatabuilder.ComandoTipoParqueaderoTestDataBuilder;
 import com.ceiba.tipohabitacion.comando.ComandoTipoHabitacion;
 import com.ceiba.tipohabitacion.controlador.ComandoControladorTipoHabitacion;
+import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
+import com.ceiba.tipohabitacion.puerto.dao.DaoTipoHabitacion;
 import com.ceiba.tipoparqueadero.comando.ComandoTipoParqueadero;
 import com.ceiba.tipoparqueadero.controlador.ComandoControladorTipoParqueadero;
+import com.ceiba.tipoparqueadero.modelo.dto.DtoTipoParqueadero;
+import com.ceiba.tipoparqueadero.puerto.dao.DaoTipoParqueadero;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +21,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -33,6 +40,9 @@ public class ComandoControladorTipoParqueaderoTest {
     @Autowired
     private MockMvc mocMvc;
 
+    @Autowired
+    private DaoTipoParqueadero daoTipoParqueadero;
+
     @Test
     public void crear() throws Exception{
         // arrange
@@ -42,7 +52,20 @@ public class ComandoControladorTipoParqueaderoTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoTipoParqueadero)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));;
+                .andExpect(content().json("{'valor': 2}"))
+                .andDo(
+                        resultValorar -> {
+                            List<DtoTipoParqueadero> parqueaderoList = daoTipoParqueadero.listar();
+                            int count = 0;
+                            for (DtoTipoParqueadero tipoParqueadero:
+                                    parqueaderoList) {
+                                if(tipoParqueadero.getId().equals(comandoTipoParqueadero.getId())){
+                                    count ++;
+                                }
+                            }
+                            assertEquals(1, count);
+                        }
+                );
     }
 
     @Test
@@ -54,6 +77,18 @@ public class ComandoControladorTipoParqueaderoTest {
         mocMvc.perform(delete("/tipoparqueadero/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk()).andDo(
+                        resultValorar -> {
+                            List<DtoTipoParqueadero> parqueaderoList = daoTipoParqueadero.listar();
+                            int count = 0;
+                            for (DtoTipoParqueadero tipoParqueadero:
+                                    parqueaderoList) {
+                                if(tipoParqueadero.getId().equals(id)){
+                                    count ++;
+                                }
+                            }
+                            assertEquals(0, count);
+                        }
+                );
     }
 }

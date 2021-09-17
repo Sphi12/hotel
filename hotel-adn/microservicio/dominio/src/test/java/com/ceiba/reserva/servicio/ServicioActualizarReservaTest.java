@@ -60,7 +60,7 @@ public class ServicioActualizarReservaTest {
     @Test
     public void validarCheckInPreTiempoTest() {
 
-        Reserva reserva = new ReservaTestDataBuilder().conId(1L).conFechaIngreso(LocalDate.of(2021, 9, 10))
+        Reserva reserva = new ReservaTestDataBuilder().conId(1L).conFechaIngreso(LocalDate.now().plusDays(1l))
                 .conCheckIn(true).conCheckOut(false).build();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         DaoReserva daoReserva = Mockito.mock(DaoReserva.class);

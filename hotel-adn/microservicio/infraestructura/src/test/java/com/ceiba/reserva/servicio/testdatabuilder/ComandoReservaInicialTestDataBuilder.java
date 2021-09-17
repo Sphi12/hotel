@@ -20,8 +20,8 @@ public class ComandoReservaInicialTestDataBuilder {
         tipoHabitacion = "individual";
         tipoParqueadero = "carro";
         idUsuario = 1L;
-        fechaIngreso = LocalDate.of(2021,9,20);
-        fechaSalida = LocalDate.of(2021,9,25);
+        fechaIngreso = LocalDate.now().plusDays(1l);
+        fechaSalida = LocalDate.now().plusDays(5l);
     }
 
     public ComandoReservaInicial build() {

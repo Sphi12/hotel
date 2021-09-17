@@ -41,8 +41,6 @@ export class ListarReservaComponent implements OnInit {
                   `Se cancelo correctamente ${reserva.id}`,
                   'success'
                 );
-
-              
               }
             },
             (e) => {
@@ -71,20 +69,16 @@ export class ListarReservaComponent implements OnInit {
         'No!!'
       )
       .then((respuestaConfirmacion) => {
-        if (respuestaConfirmacion) {
-
-          console.log(reserva.id + ' ' + reserva.checkIn)
+        if (respuestaConfirmacion) {          
          this.reservaService.reservaActiva = reserva;
          this.reservaService.reservaActiva.checkIn='true';
-         console.log('2' +reserva.id + ' ' + reserva.checkIn)
-          this.reservaService.editar(reserva).subscribe(
-            (response) => {
-              if (response.valor) {
-                this.modalNotificaciones.modalBasico(
-                  `Check-in correcto`,
-                  'success'
-                );
-                
+         this.reservaService.editar(reserva).subscribe(
+           (response) => {
+             if (response.valor) {
+               this.modalNotificaciones.modalBasico(
+                 `Check-in correcto`,
+                 'success'
+                 );
               }
             },
             (e) => {
@@ -123,7 +117,6 @@ export class ListarReservaComponent implements OnInit {
                   `Check-out correcto`,
                   'success'
                 );
-                
               }
             },
             (e) => {

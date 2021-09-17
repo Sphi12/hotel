@@ -1,5 +1,6 @@
 package com.ceiba.usuario.servicio;
 
+import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
@@ -16,9 +17,9 @@ public class ServicioActualizarUsuarioTest {
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder().conId(1L).build();
         RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-        Mockito.when(repositorioUsuario.existeExcluyendoIdUsuario(Mockito.anyLong(),Mockito.anyString())).thenReturn(true);
+        Mockito.when(repositorioUsuario.existeUsuario(Mockito.anyLong())).thenReturn(false);
         ServicioActualizarUsuario servicioActualizarUsuario = new ServicioActualizarUsuario(repositorioUsuario);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionDuplicidad.class,"El usuario ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionSinDatos.class,"El usuario no existe en el sistema");
     }
 }

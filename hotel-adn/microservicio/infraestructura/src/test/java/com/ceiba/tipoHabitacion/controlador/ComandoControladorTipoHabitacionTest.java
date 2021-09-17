@@ -2,10 +2,13 @@ package com.ceiba.tipoHabitacion.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.habitacion.comando.ComandoHabitacion;
+import com.ceiba.habitacion.modelo.dto.DtoHabitacion;
 import com.ceiba.habitacion.servicio.testdatabuilder.ComandoHabitacionTestDataBuilder;
 import com.ceiba.tipoHabitacion.servicio.testdatabuilder.ComandoTipoHabitacionTestDataBuilder;
 import com.ceiba.tipohabitacion.comando.ComandoTipoHabitacion;
 import com.ceiba.tipohabitacion.controlador.ComandoControladorTipoHabitacion;
+import com.ceiba.tipohabitacion.modelo.dto.DtoTipoHabitacion;
+import com.ceiba.tipohabitacion.puerto.dao.DaoTipoHabitacion;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +19,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -31,6 +37,8 @@ public class ComandoControladorTipoHabitacionTest {
     @Autowired
     private MockMvc mocMvc;
 
+    @Autowired
+    private DaoTipoHabitacion daoTipoHabitacion;
     @Test
     public void crear() throws Exception{
         // arrange
@@ -40,7 +48,19 @@ public class ComandoControladorTipoHabitacionTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoTipoHabitacion)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));;
+                .andExpect(content().json("{'valor': 2}")).andDo(
+                        resultValorar -> {
+                            List<DtoTipoHabitacion> updateHabitacionList = daoTipoHabitacion.listar();
+                            int count = 0;
+                            for (DtoTipoHabitacion habitacionItem:
+                                    updateHabitacionList) {
+                                if(habitacionItem.getId().equals(comandoTipoHabitacion.getId())){
+                                    count ++;
+                                }
+                            }
+                            assertEquals(1, count);
+                        }
+                );
     }
 
     @Test
@@ -52,6 +72,19 @@ public class ComandoControladorTipoHabitacionTest {
         mocMvc.perform(delete("/tipohabitacion/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                        .andExpect(status().isOk())
+                        .andDo(
+                            resultValorar -> {
+                                List<DtoTipoHabitacion> updateHabitacionList = daoTipoHabitacion.listar();
+                                int count = 0;
+                                for (DtoTipoHabitacion habitacionItem:
+                                        updateHabitacionList) {
+                                    if(habitacionItem.getId().equals(id)){
+                                        count ++;
+                                    }
+                                }
+                                assertEquals(0, count);
+                            }
+                          );
     }
 }

@@ -2,12 +2,14 @@ package com.ceiba.reserva.modelo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
+@ToString
 public class DtoReserva {
 
 

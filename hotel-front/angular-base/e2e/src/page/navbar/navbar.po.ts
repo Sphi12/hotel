@@ -8,4 +8,8 @@ export class NavbarPage {
     async clickUsuario() {
         await this.linkUsuario.click();
     }
+
+    async clickReserva() {
+        await this.linkReserva.click();
+    }
 }

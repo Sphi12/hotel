@@ -21,7 +21,6 @@ public class ComandoHabitacionTestDataBuilder {
         disponible = true;
         nombre = "habitacion";
     }
-
     public ComandoHabitacion build() {
 
         return new ComandoHabitacion(id, tipo, disponible, nombre);

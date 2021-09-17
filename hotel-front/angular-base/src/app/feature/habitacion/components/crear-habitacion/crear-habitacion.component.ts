@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HabitacionService } from '../../shared/service/habitacion.service';
 import { ModalNotificaciones } from '@core/services/modal-notificaciones.service';
-import { tiposDeHabitacion } from '../../../../../assets/json/tipos_habitacion';
 
 @Component({
   selector: 'app-crear-habitacion',
@@ -18,7 +17,6 @@ export class CrearHabitacionComponent implements OnInit {
     private habitacionServices: HabitacionService,
     private modalNotificaciones: ModalNotificaciones
   ) {
-    this.tiposHabitacionList = tiposDeHabitacion;
   }
 
   ngOnInit(): void {
@@ -46,7 +44,7 @@ export class CrearHabitacionComponent implements OnInit {
                 'warning'
               );
             }
-          );       
+          );
   }
 
   limpiar() {

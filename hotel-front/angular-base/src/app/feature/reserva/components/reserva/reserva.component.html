@@ -4,20 +4,13 @@
      
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="./crear" routerLinkActive="active">Crear Reserva</a>
+          <a class="nav-link" id="linkCrearRes" href="#" routerLink="./crear" routerLinkActive="active">Crear Reserva</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="./listar" routerLinkActive="active">Listar reservas</a>
+          <a class="nav-link" id="linkListarReserva" href="#" routerLink="./listar" routerLinkActive="active">Listar reservas</a>
         </li>
     
       </ul>
-
-     
-
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Id reserva" aria-label="IdReserva" id="id">
-        <button class="btn btn-outline-success" type="submit"  (ngSubmit)="navegarABuscar(id)" >Buscar</button>
-      </form>
     </div>
   </nav>
 

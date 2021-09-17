@@ -1,14 +1,19 @@
 package com.ceiba.reserva.controlador;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 import com.ceiba.ApplicationMock;
 import com.ceiba.reserva.comando.ComandoReserva;
 import com.ceiba.reserva.comando.ComandoReservaInicial;
+import com.ceiba.reserva.modelo.dto.DtoReserva;
+import com.ceiba.reserva.puerto.dao.DaoReserva;
 import com.ceiba.reserva.servicio.testdatabuilder.ComandoReservaTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ComandoControladorReserva.class)
@@ -30,7 +36,8 @@ public class ComandoControladorReservaTest {
 
     @Autowired
     private MockMvc mocMvc;
-
+    @Autowired
+    DaoReserva daoReserva ;
 
     @Test
     public void crear() throws Exception{
@@ -43,28 +50,25 @@ public class ComandoControladorReservaTest {
                 .content(objectMapper.writeValueAsString(reservaInicial)))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
-               // .andDo(
-                //resultValorar -> {
-                  //  Jugador  updateJugadorResponse = daojugador.getJugadorId(id)
-                   // assertEquals(1116745412, updateJugadorResponse.getInt("numeroIdentificacion"));
-//                    assertEquals("100000000.00", updateJugadorResponse.getString("valorizacion"));7
-  ///                  assertEquals("2021-04-13 00:00:00.0", updateJugadorResponse.getString("fechaValorizacion"));
-     //           }
-        //);
     }
 
 
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 1L;
         ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
-
+        reserva.setFechaSalida(reserva.getFechaIngreso().plusDays(5));
         // act - assert
-        mocMvc.perform(put("/reservas/{id}",id)
+        mocMvc.perform(put("/reservas/{id}",reserva.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(reserva)))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(
+                        resultValorar -> {
+                            DtoReserva updateReservaResponse = daoReserva.obtener(reserva.getId());
+                            assertEquals(reserva.getFechaIngreso().plusDays(5), updateReservaResponse.getFechaSalida());
+                        }
+                );
     }
 
     @Test
@@ -76,6 +80,12 @@ public class ComandoControladorReservaTest {
         mocMvc.perform(delete("/reservas/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(
+                        resultValorar -> {
+                            DtoReserva updateReservaResponse = daoReserva.obtener(id);
+                            assertNull(updateReservaResponse);
+                        }
+                );
     }
 }

@@ -10,8 +10,7 @@ export class UsuarioPage {
     private botonCrearUsuario = element(by.buttonText('Crear usuario'));
     private botonCrear = element(by.buttonText('Crear'));
     private listaUsuarios = element.all(by.css('ul.usuarios li'));
-    private textoSweetAlert = element(by.id('swal2-title'));
-    
+    private textoSweetAlert = element(by.id('swal2-title'));    
     async clickBotonLinkCrearUsuario() {
         await this.linkCrearUsuario.click();
     }

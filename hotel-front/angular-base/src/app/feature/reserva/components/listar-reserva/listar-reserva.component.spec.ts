@@ -15,9 +15,9 @@ describe('ListarReservaComponent', () => {
   let fixture: ComponentFixture<ListarReservaComponent>;
   let reservaService: ReservaService;
   const listaReservas: Reserva[] = [
-    {   
+    {
       id: 1,
-      idHabitacion:2,
+      idHabitacion: 2,
       tipoHabitacion: 'individual',
       idParqueadero: 1,
       tipoParqueadero: 'carro',
@@ -31,7 +31,7 @@ describe('ListarReservaComponent', () => {
     },
     {
       id: 2,
-      idHabitacion:1,
+      idHabitacion: 1,
       tipoHabitacion: 'individual',
       idParqueadero: 1,
       tipoParqueadero: 'carro',
@@ -45,7 +45,7 @@ describe('ListarReservaComponent', () => {
     },
     {
       id: 3,
-      idHabitacion:1,
+      idHabitacion: 1,
       tipoHabitacion: 'Individual',
       idParqueadero: 1,
       tipoParqueadero: 'Moto',
@@ -57,7 +57,6 @@ describe('ListarReservaComponent', () => {
       checkIn: 'false',
       checkOut: 'false'
     },
-    
   ];
 
   beforeEach(

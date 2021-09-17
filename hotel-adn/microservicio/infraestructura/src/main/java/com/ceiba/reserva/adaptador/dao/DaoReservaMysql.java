@@ -5,6 +5,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
 import com.ceiba.reserva.puerto.dao.DaoReserva;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +34,13 @@ public class DaoReservaMysql implements DaoReserva {
     public DtoReserva obtener(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtener, paramSource,new MapeoReserva());
+        try {
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtener, paramSource, new MapeoReserva());
+        }catch (Exception e) {
+            if(e instanceof EmptyResultDataAccessException){
+                return null;
+            }
+            throw e;
+        }
     }
 }

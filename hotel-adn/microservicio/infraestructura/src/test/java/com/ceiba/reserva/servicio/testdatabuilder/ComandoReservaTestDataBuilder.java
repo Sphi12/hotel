@@ -25,19 +25,21 @@ public class ComandoReservaTestDataBuilder {
     private boolean checkOut;
 
     public ComandoReservaTestDataBuilder() {
-        id = 2L;
+        id = 1L;
         idHabitacion = 1L;
         tipoHabitacion = "individual";
         idParqueadero = 1L;
         tipoParqueadero = "carro";
         idUsuario = 1L;
-        fechaIngreso = LocalDate.of(2021, 9, 3);
-        fechaSalida = LocalDate.of(2021, 9, 6);
+        fechaIngreso = LocalDate.now();
+        fechaSalida = LocalDate.now().plusDays(4);
         fechaReserva = LocalDateTime.now();
         precioTotal = 451800.0;
         checkIn = false;
         checkOut = false;
     }
+
+
 
     public ComandoReserva build() {
 

@@ -47,7 +47,6 @@ export class CrearReservaComponent implements OnInit {
       )
       .then((respuestaConfirmacion) => {
         if (respuestaConfirmacion) {
-          
           this.reservaServices.crear(this.envioForm.value).subscribe(
             (response) => {
               this.id = response.valor;

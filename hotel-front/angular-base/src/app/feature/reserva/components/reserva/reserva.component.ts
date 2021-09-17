@@ -12,7 +12,7 @@ export class ReservaComponent implements OnInit {
 
   public reserva: Observable<Reserva>;
   envioForm: FormGroup;
-  id: number
+  id: number;
 
    constructor(
   ) {}
@@ -22,7 +22,7 @@ export class ReservaComponent implements OnInit {
 
   navegarABuscar(id: number) {
 
-    console.log(id)
+    console.log(id);
   }
 
 }

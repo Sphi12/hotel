@@ -43,7 +43,7 @@ export class CrearUsuarioComponent implements OnInit {
                 'warning'
               );
             }
-          );       
+          );
   }
 
   limpiar() {

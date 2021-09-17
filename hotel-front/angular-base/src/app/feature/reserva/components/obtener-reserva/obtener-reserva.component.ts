@@ -11,10 +11,8 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './obtener-reserva.component.html'
 })
 export class ObtenerReservaComponent implements OnInit {
- 
   public reserva: Observable<Reserva>;
   envioForm: FormGroup;
-
 
   constructor(
     private reservaService: ReservaService,
@@ -23,7 +21,6 @@ export class ObtenerReservaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.envioForm.value)
     this.reserva = this.reservaService.obtener(this.envioForm.value);
   }
 
