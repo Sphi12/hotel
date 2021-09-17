@@ -72,6 +72,20 @@ public class ComandoControladorReservaTest {
     }
 
     @Test
+    public void actualizarReservaNoExistente() throws Exception{
+        // arrange
+        long id = 10000000001l;
+        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
+        reserva.setFechaSalida(reserva.getFechaIngreso().plusDays(5));
+        reserva.setId(id);
+        // act - assert
+        mocMvc.perform(put("/reservas/{id}",reserva.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reserva)))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
     public void eliminar() throws Exception {
         // arrange
         Long id = 2L;

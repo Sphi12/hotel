@@ -66,6 +66,19 @@ public class ComandoControladorUsuarioTest {
     }
 
     @Test
+    public void crearExistente() throws Exception {
+        // arrange
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder()
+                .conId(1l).conNombre("Pepito").build();
+
+        // act - assert
+        mocMvc.perform(post("/usuarios")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(usuario)))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
     public void actualizar() throws Exception {
         // arrange
         Long id = 109L;
@@ -87,6 +100,20 @@ public class ComandoControladorUsuarioTest {
                             }
                         }
                 );
+    }
+
+    @Test
+    public void actualizarNoExistente() throws Exception {
+        // arrange
+        Long id = 10000000000000001l;
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().
+                conId(id).conNombre("SOphiaV ").build();
+
+        // act - assert
+        mocMvc.perform(put("/usuarios/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(usuario)))
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
