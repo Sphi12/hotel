@@ -158,7 +158,7 @@ public class ServicioCrearReserva {
 
     private DtoTipoHabitacion obtenertipoHabitacion(String tipoHabitacion) {
         List<DtoTipoHabitacion> tipoHabitacionList = this.repositorioTipoHabitacion.obtenerPorIdTHabitacion(tipoHabitacion);
-        if (!tipoHabitacionList.isEmpty() && tipoHabitacionList.size() > 0) {
+        if (!tipoHabitacionList.isEmpty()) {
             return tipoHabitacionList.get(0);
         }
         return null;
@@ -166,7 +166,7 @@ public class ServicioCrearReserva {
 
     private DtoTipoParqueadero obtenertipoParqueadero(String tipoParqueadero) {
         List<DtoTipoParqueadero> tipoParqueaderoList = this.repositorioTipoParqueadero.obtenerIdTParqueadero(tipoParqueadero);
-        if (!tipoParqueaderoList.isEmpty() && tipoParqueaderoList.size() > 0) {
+        if (!tipoParqueaderoList.isEmpty()) {
             return tipoParqueaderoList.get(0);
         }
         return null;
