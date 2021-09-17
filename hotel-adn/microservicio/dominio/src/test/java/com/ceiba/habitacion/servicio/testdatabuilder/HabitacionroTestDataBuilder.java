@@ -7,14 +7,12 @@ public class HabitacionroTestDataBuilder {
     private Long id;
     private Long tipo;
     private boolean disponible;
-    private String nombre;
 
 
     public HabitacionroTestDataBuilder() {
         id = 1L;
         tipo = 1L;
         disponible = true;
-        nombre = "prueba";
     }
 
     public HabitacionroTestDataBuilder conId(Long id) {
@@ -23,6 +21,6 @@ public class HabitacionroTestDataBuilder {
     }
 
     public Habitacion build() {
-        return new Habitacion(id, tipo, disponible, nombre);
+        return new Habitacion(id, tipo, disponible);
     }
 }
