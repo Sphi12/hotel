@@ -10,15 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class ListarHabitacionComponent implements OnInit {
   public listaHabitacion: Observable<Habitacion[]>;
- 
   constructor(
     private habitacionService: HabitacionService,
-    
   ) {}
 
   ngOnInit() {
     this.listaHabitacion = this.habitacionService.listar();
-  
   }
-
 }

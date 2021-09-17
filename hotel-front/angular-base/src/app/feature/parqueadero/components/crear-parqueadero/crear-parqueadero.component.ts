@@ -26,28 +26,26 @@ export class CrearParqueaderoComponent implements OnInit {
   }
 
   crear() {
-
-    console.log(this.envioForm);
     this.reservaServices.crear(this.envioForm.value).subscribe(
       (response) => {
         this.id = response.valor;
         if (response.valor) {
           this.modalNotificaciones.modalBasico(
             `Se creo el parqueadero  # ${response.valor}`,
-             'success'
-             );
-             this.envioForm.reset();
-            }
-          },
-          (e) => {
-            console.log(e.error.mensaje);
-            this.modalNotificaciones.modalBasico(
-              `No se puedo crear el parqueadero ${e.error.mensaje}`,
-              'warning'
-              );
-            }
+            'success'
             );
-          }
+          this.envioForm.reset();
+        }
+      },
+      (e) => {
+        console.log(e.error.mensaje);
+        this.modalNotificaciones.modalBasico(
+          `No se puedo crear el parqueadero ${e.error.mensaje}`,
+          'warning'
+          );
+        }
+        );
+      }
 
   limpiar() {
     this.envioForm.reset();

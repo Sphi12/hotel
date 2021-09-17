@@ -15,13 +15,11 @@ export class HabitacionService {
   }
 
   public crear(habitacion: Habitacion) {
-    habitacion.disponible ='true' ;
+    habitacion.disponible = 'true' ;
     return this.http.doPost<Habitacion, any>(
       `${environment.endpoint}/habitaciones`,
       habitacion,
       this.http.optsName('crear/actualizar habitaciones')
     );
   }
-
-  
 }

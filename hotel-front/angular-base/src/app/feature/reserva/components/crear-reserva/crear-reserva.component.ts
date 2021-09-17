@@ -35,44 +35,31 @@ export class CrearReservaComponent implements OnInit {
   }
 
   crear() {
-    this.modalNotificaciones
-      .modalConConfirmacion(
-        'Estas seguro de crear la reserva',
-        'warning',
-        true,
-        '#3085d6',
-        '#d33',
-        'Si',
-        'No'
-      )
-      .then((respuestaConfirmacion) => {
-        if (respuestaConfirmacion) {
-          this.reservaServices.crear(this.envioForm.value).subscribe(
-            (response) => {
-              this.id = response.valor;
-              if (response.valor) {
-                this.modalNotificaciones.modalBasico(
-                  `Se creo la reserva  # ${response.valor}`,
-                  'success'
-                );
-                this.envioForm.reset();
 
-                setTimeout(() => {
-                  this.irAListarReservas();
-                }, 1000);
-              }
-            },
-            (e) => {
-              console.log(e.error.mensaje);
-              this.modalNotificaciones.modalBasico(
-                `No se puedo crear la reserva ${e.error.mensaje}`,
-                'warning'
-              );
-            }
+    this.reservaServices.crear(this.envioForm.value).subscribe(
+      (response) => {
+        this.id = response.valor;
+        if (response.valor) {
+          this.modalNotificaciones.modalBasico(
+            `Se creo la reserva  # ${response.valor}`,
+            'success'
           );
+          this.envioForm.reset();
+
+          setTimeout(() => {
+            this.irAListarReservas();
+          }, 1000);
         }
-      });
-  }
+      },
+      (e) => {
+        console.log(e.error.mensaje);
+        this.modalNotificaciones.modalBasico(
+          `No se puedo crear la reserva ${e.error.mensaje}`,
+          'warning'
+        );
+      }
+    );
+}
 
   limpiar() {
     this.envioForm.reset();

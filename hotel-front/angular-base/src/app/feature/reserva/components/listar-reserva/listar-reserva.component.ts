@@ -69,9 +69,9 @@ export class ListarReservaComponent implements OnInit {
         'No!!'
       )
       .then((respuestaConfirmacion) => {
-        if (respuestaConfirmacion) {          
+        if (respuestaConfirmacion) {
          this.reservaService.reservaActiva = reserva;
-         this.reservaService.reservaActiva.checkIn='true';
+         this.reservaService.reservaActiva.checkIn = 'true';
          this.reservaService.editar(reserva).subscribe(
            (response) => {
              if (response.valor) {
@@ -109,8 +109,8 @@ export class ListarReservaComponent implements OnInit {
       .then((respuestaConfirmacion) => {
         if (respuestaConfirmacion) {
          this.reservaService.reservaActiva = reserva;
-         this.reservaService.reservaActiva.checkOut='true';
-          this.reservaService.editar(reserva).subscribe(
+         this.reservaService.reservaActiva.checkOut = 'true';
+         this.reservaService.editar(reserva).subscribe(
             (response) => {
               if (response.valor) {
                 this.modalNotificaciones.modalBasico(

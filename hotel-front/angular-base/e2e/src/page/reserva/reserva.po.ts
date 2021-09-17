@@ -4,10 +4,7 @@ export class ReservaPage {
     private linkCrearReserva = element(by.id('linkCrearRes'));
     private linkListarReservas = element(by.id('linkListarReserva'));
     private inputTipoHabitacion = element(by.id('tipoHabitacion'));
-    private inputTipoParqueadero = element.all(by.id('tipoParqueadero')).then(function(items) {
-      expect(items.length).toBe(4);
-      expect(items[0].getText()).toBe('Moto');
-    });
+    private inputTipoParqueadero = element(by.id('tipoParqueadero'));
     private inputIdUsuario = element(by.id('idUsuario'));
     private inputFechaIngreso = element(by.id('fechaIngreso'));
     private inputFechaSalida = element(by.id('fechaSalida'));
@@ -17,6 +14,16 @@ export class ReservaPage {
     private botonCheckOut = element(by.buttonText('Check-out'));
     private textoSweetAlert = element(by.id('swal2-title'));
     private botonOkVentanaModal = element(by.buttonText('Si'));
+
+    private botonCheckInPrimerReserva = element(by.buttonText('Check-in'));
+
+    async clickEditarPrimeraReserva() {
+      await this.botonCheckInPrimerReserva.click();
+    }
+
+    cambiarSelectorEvento(nombreSelector, evento) {
+      element(by.id(nombreSelector)).sendKeys(evento);
+    }
 
     async clickBotonOK() {
         await this.botonOkVentanaModal.click();
