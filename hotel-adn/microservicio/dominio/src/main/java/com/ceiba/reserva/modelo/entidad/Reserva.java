@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import static com.ceiba.dominio.ValidadorArgumento.*;
 
@@ -55,9 +54,7 @@ public class Reserva {
         validarObligatorio(fechaSalida, SE_DEBE_INGRESAR_LA_FECHA_DE_SALIDA);
         validarTipoHabitacion(tipoHabitacion);
         validarTipoParqueadero(tipoParqueadero);
-        validarMenor(LocalDateTime.of
-                (fechaIngreso, LocalTime.of(00, 00, 00)), LocalDateTime.of
-                (fechaSalida, LocalTime.of(01, 00, 00)), FECHA_INGRESO_INCORRECTA);
+        validarMenorDate(fechaIngreso, fechaSalida, FECHA_INGRESO_INCORRECTA);
 
         this.id = id;
         this.idHabitacion = idHabitacion;

@@ -12,7 +12,7 @@ import com.ceiba.tipohabitacion.puerto.repositorio.RepositorioTipoHabitacion;
 import com.ceiba.tipoparqueadero.modelo.dto.DtoTipoParqueadero;
 import com.ceiba.tipoparqueadero.puerto.repositorio.RepositorioTipoParqueadero;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-
+import static java.time.temporal.ChronoUnit.DAYS;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -83,7 +83,7 @@ public class ServicioCrearReserva {
 
     private void validarTiempoMinimoReserva(LocalDate fechaIngreso) {
         if ((int) ChronoUnit.HOURS.between(LocalDateTime.now(), LocalDateTime.of
-                (fechaIngreso, LocalTime.of(14, 00, 00))) <= 3) {
+                (fechaIngreso, LocalTime.of(13, 59, 59))) <= 3) {
             throw new ExcepcionValorInvalido(TIEMPO_SUPERADO_PARA_RESERVA);
         }
     }
@@ -117,9 +117,8 @@ public class ServicioCrearReserva {
 
     private Double obtenerPrecioTotal(Reserva reserva, boolean parqueadero) {
 
-        int diasEstadia = (int) ChronoUnit.DAYS.between(LocalDateTime.of
-                (reserva.getFechaIngreso(), LocalTime.of(00, 00, 00)), LocalDateTime.of
-                (reserva.getFechaSalida(), LocalTime.of(00, 00, 00)));
+        int diasEstadia = (int)(DAYS.between(reserva.getFechaIngreso(), reserva.getFechaSalida()));
+
         Double precioTotal = 0.0;
         if (!parqueadero) {
             precioTotal = obtenerPrecioTotalHabitacion(reserva);

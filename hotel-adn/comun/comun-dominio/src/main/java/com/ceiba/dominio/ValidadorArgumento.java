@@ -1,5 +1,6 @@
 package com.ceiba.dominio;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -56,6 +57,13 @@ public class ValidadorArgumento {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
+
+    public static void validarMenorDate(LocalDate fechaInicial, LocalDate fechaFinal, String mensaje) {
+        if (fechaInicial.isAfter(fechaFinal)) {
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+
 
     public static void validarMenor(Long numeroInicial, Long numeroFinal, String mensaje) {
         if (numeroInicial > numeroFinal) {
