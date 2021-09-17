@@ -16,9 +16,8 @@ public class Habitacion {
     private Long id;
     private Long tipo;
     private boolean disponible;
-    private String nombre;
 
-    public Habitacion(Long id, Long tipo, boolean disponible, String nombre) {
+    public Habitacion(Long id, Long tipo, boolean disponible) {
         validarObligatorio(tipo, SE_DEBE_INGRESAR_EL_TIPO_HABITACION);
         validarObligatorio(disponible, SE_DEBE_INGRESAR_LA_DISPONIBILIDAD);
         validarTrue(disponible, SE_DEBE_INGRESAR_DISPIBILIDAD_TRUE);
@@ -26,7 +25,6 @@ public class Habitacion {
         this.id = id;
         this.tipo = tipo;
         this.disponible = disponible;
-        this.nombre = nombre;
     }
 
 }

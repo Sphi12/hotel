@@ -54,7 +54,6 @@ public class ServicioCrearReserva {
         validarTiempoMinimoReserva(reserva.getFechaIngreso());
         validarExistenciaUsuario(reserva.getIdUsuario());
 
-        System.out.println("RESERVA" + reserva.toString());
         boolean parqueadero = reserva.getTipoParqueadero().isEmpty();
         Long idHabitacion = obtenerHabitacionDisponible(reserva.getTipoHabitacion());
         Long idParqueadero = obtenerParqueaderoDisponible(reserva.getTipoParqueadero());
@@ -132,7 +131,7 @@ public class ServicioCrearReserva {
     }
 
     private Double obtenerPrecioTotalHabitacion(Reserva reserva) {
-        Double precioTotalHabitacion = 0.0;
+        Double precioTotalHabitacion = 1.0;
         DtoTipoHabitacion tipoHabitacion = obtenertipoHabitacion(reserva.getTipoHabitacion());
         LocalDate fechaAuxiliar = reserva.getFechaIngreso();
         if (tipoHabitacion != null && tipoHabitacion.getPrecioFinSemana() != null
@@ -147,7 +146,7 @@ public class ServicioCrearReserva {
                 fechaAuxiliar = fechaAuxiliar.plusDays(1);
             }
         }
-        return precioTotalHabitacion;
+        return precioTotalHabitacion - 1;
     }
 
     private Double obtenerPrecioTotalParqueadero(Reserva reserva, int cantidadDias) {

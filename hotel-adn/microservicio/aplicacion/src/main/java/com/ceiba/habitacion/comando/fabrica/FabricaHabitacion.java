@@ -10,9 +10,7 @@ public class FabricaHabitacion {
         return new Habitacion(
                 comandoHabitacion.getId(),
                 comandoHabitacion.getTipo(),
-                comandoHabitacion.isDisponible(),
-                comandoHabitacion.getNombre()
-
+                comandoHabitacion.isDisponible()
         );
     }
 
