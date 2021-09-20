@@ -169,7 +169,7 @@ public class ServicioCrearReservaTest {
                 repositorioTipoHabitacion, repositorioTipoParqueadero);
 
         servicioCrearReserva.ejecutar(reserva);
-        Double valorEsperado = 287100.0;
+        Double valorEsperado = 251100.0;
 
         assertEquals(valorEsperado, reserva.getPrecioTotal());
 

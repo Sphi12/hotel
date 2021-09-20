@@ -10,17 +10,11 @@ public class FabricaReservaInicial {
     public Reserva crear(ComandoReservaInicial comandoReservaInicial) {
         return new Reserva(
                 comandoReservaInicial.getId(),
-                null,
                 comandoReservaInicial.getTipoHabitacion(),
-                null,
                 comandoReservaInicial.getTipoParqueadero(),
                 comandoReservaInicial.getIdUsuario(),
-                null,
                 comandoReservaInicial.getFechaIngreso(),
-                comandoReservaInicial.getFechaSalida(),
-                0.0,
-                false,
-                false
+                comandoReservaInicial.getFechaSalida()
         );
     }
 }

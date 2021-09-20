@@ -15,6 +15,18 @@ describe('workspace-project Reserva', () => {
         browser.driver.manage().window().maximize();
     });
 
+    fit('Deberia hacer chek-in', () => {
+        browser.sleep(5000);
+        page.navigateTo();
+        navBar.clickReserva();
+        browser.sleep(5000);
+        reserva.clickBotonListarReserva();
+        browser.sleep(3000);
+        reserva.clickEditarPrimeraReserva();
+        browser.sleep(3000);
+        reserva.clickBotonOK();
+    });
+
     it('Deberia crear reserva', () => {
         const ID_USUARIO = '1';
         const TIPO_HABITACION = 'Individual';

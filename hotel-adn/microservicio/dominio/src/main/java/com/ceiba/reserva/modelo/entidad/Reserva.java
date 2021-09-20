@@ -44,9 +44,8 @@ public class Reserva {
     private boolean checkIn;
     private boolean checkOut;
 
-    public Reserva(Long id,Long idHabitacion,String tipoHabitacion, Long idParqueadero, String tipoParqueadero,
-                   Long idUsuario, LocalDateTime fechaReserva,LocalDate fechaIngreso,
-                   LocalDate fechaSalida, Double precioTotal, boolean checkIn, boolean checkOut) {
+    public Reserva(Long id, String tipoHabitacion, String tipoParqueadero,  Long idUsuario, LocalDate fechaIngreso,
+                   LocalDate fechaSalida){
 
         validarObligatorio(tipoHabitacion, SE_DEBE_INGRESAR_EL_ID_DE_LA_HABITACION);
         validarObligatorio(tipoParqueadero, SE_DEBE_INGRESAR_EL_ID_DEL_PARQUEADERO);
@@ -55,6 +54,20 @@ public class Reserva {
         validarTipoHabitacion(tipoHabitacion);
         validarTipoParqueadero(tipoParqueadero);
         validarMenorDate(fechaIngreso, fechaSalida, FECHA_INGRESO_INCORRECTA);
+
+        this.id = id;
+        this.tipoHabitacion = tipoHabitacion;
+        this.tipoParqueadero = tipoParqueadero;
+        this.idUsuario = idUsuario;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaSalida = fechaSalida;
+        this.checkIn = false;
+        this.checkOut = false;
+    }
+
+    public Reserva(Long id,Long idHabitacion,String tipoHabitacion, Long idParqueadero, String tipoParqueadero,
+                   Long idUsuario, LocalDateTime fechaReserva,LocalDate fechaIngreso,
+                   LocalDate fechaSalida, Double precioTotal, boolean checkIn, boolean checkOut) {
 
         this.id = id;
         this.idHabitacion = idHabitacion;

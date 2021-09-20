@@ -65,7 +65,7 @@ public class ComandoControladorParqueaderoTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 5L;
+        Long id = 3L;
 
         // act - assert
         mocMvc.perform(delete("/parqueaderos/{id}",id)

@@ -15,10 +15,10 @@ export class ReservaPage {
     private textoSweetAlert = element(by.id('swal2-title'));
     private botonOkVentanaModal = element(by.buttonText('Si'));
 
-    private botonCheckInPrimerReserva = element(by.buttonText('Check-in'));
+    private botonCheckInPrimerReserva = element.all(by.buttonText('Check-in'));
 
     async clickEditarPrimeraReserva() {
-      await this.botonCheckInPrimerReserva.click();
+      await this.botonCheckInPrimerReserva.first().click();
     }
 
     cambiarSelectorEvento(nombreSelector, evento) {

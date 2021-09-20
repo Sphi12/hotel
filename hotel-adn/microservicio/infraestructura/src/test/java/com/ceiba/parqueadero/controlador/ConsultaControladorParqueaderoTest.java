@@ -39,11 +39,7 @@ public class ConsultaControladorParqueaderoTest {
 
                 .andExpect(jsonPath("$[1].id", is(2)))
                 .andExpect(jsonPath("$[1].idTipoParqueadero", is(2)))
-                .andExpect(jsonPath("$[1].disponible", is(true)))
-
-                .andExpect(jsonPath("$[2].id", is(3)))
-                .andExpect(jsonPath("$[2].idTipoParqueadero", is(3)))
-                .andExpect(jsonPath("$[2].disponible", is(true)));
+                .andExpect(jsonPath("$[1].disponible", is(true)));
 
 
     }

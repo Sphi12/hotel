@@ -12,7 +12,9 @@ import com.ceiba.tipohabitacion.puerto.repositorio.RepositorioTipoHabitacion;
 import com.ceiba.tipoparqueadero.modelo.dto.DtoTipoParqueadero;
 import com.ceiba.tipoparqueadero.puerto.repositorio.RepositorioTipoParqueadero;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
+
 import static java.time.temporal.ChronoUnit.DAYS;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,7 +38,8 @@ public class ServicioCrearReserva {
     private final RepositorioUsuario repositorioUsuario;
     private final RepositorioTipoHabitacion repositorioTipoHabitacion;
     private final RepositorioTipoParqueadero repositorioTipoParqueadero;
-
+    private static final double PORCENTAJE_DESCUENTO = 0.10;
+    private static final int HORAS_PERMITIDAS_ANTES_RESERVA = 3;
 
     public ServicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioParqueadero repositorioParqueadero,
                                 RepositorioHabitacion repositorioHabitacion, RepositorioUsuario repositorioUsuario,
@@ -83,7 +86,7 @@ public class ServicioCrearReserva {
 
     private void validarTiempoMinimoReserva(LocalDate fechaIngreso) {
         if ((int) ChronoUnit.HOURS.between(LocalDateTime.now(), LocalDateTime.of
-                (fechaIngreso, LocalTime.of(13, 59, 59))) <= 3) {
+                (fechaIngreso, LocalTime.of(13, 59, 59))) <= HORAS_PERMITIDAS_ANTES_RESERVA) {
             throw new ExcepcionValorInvalido(TIEMPO_SUPERADO_PARA_RESERVA);
         }
     }
@@ -117,7 +120,7 @@ public class ServicioCrearReserva {
 
     private Double obtenerPrecioTotal(Reserva reserva, boolean parqueadero) {
 
-        int diasEstadia = (int)(DAYS.between(reserva.getFechaIngreso(), reserva.getFechaSalida()));
+        int diasEstadia = (int) (DAYS.between(reserva.getFechaIngreso(), reserva.getFechaSalida()));
 
         Double precioTotal;
         if (!parqueadero) {
@@ -174,7 +177,7 @@ public class ServicioCrearReserva {
 
     private Double aplicarBeneficios(int cantidadDias, Double precioTotal) {
         if (cantidadDias >= CANTIDAD_DIAS_MIN_BENEFICIO) {
-            precioTotal = precioTotal - (precioTotal * 0.10);
+            precioTotal = precioTotal - (precioTotal * PORCENTAJE_DESCUENTO);
         }
         return precioTotal;
     }
