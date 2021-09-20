@@ -1,6 +1,5 @@
 package com.ceiba.parqueadero.servicio;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
-import com.ceiba.parqueadero.modelo.entidad.Parqueadero;
 import com.ceiba.parqueadero.puerto.repositorio.RepositorioParqueadero;
 
 

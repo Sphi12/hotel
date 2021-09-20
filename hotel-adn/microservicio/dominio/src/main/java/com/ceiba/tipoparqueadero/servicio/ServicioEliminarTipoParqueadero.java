@@ -1,7 +1,6 @@
 package com.ceiba.tipoparqueadero.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.tipoparqueadero.modelo.entidad.TipoParqueadero;
 import com.ceiba.tipoparqueadero.puerto.repositorio.RepositorioTipoParqueadero;
 
 

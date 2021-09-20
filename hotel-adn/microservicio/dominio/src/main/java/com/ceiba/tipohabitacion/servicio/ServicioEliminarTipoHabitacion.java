@@ -1,7 +1,6 @@
 package com.ceiba.tipohabitacion.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
-import com.ceiba.tipohabitacion.modelo.entidad.TipoHabitacion;
 import com.ceiba.tipohabitacion.puerto.repositorio.RepositorioTipoHabitacion;
 
 public class ServicioEliminarTipoHabitacion {

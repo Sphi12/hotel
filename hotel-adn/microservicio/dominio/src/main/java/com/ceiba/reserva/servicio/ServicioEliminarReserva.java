@@ -1,6 +1,5 @@
 package com.ceiba.reserva.servicio;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
-import com.ceiba.reserva.modelo.entidad.Reserva;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 
 public class ServicioEliminarReserva {
