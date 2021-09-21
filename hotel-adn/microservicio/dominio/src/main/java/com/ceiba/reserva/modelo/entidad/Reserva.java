@@ -3,7 +3,6 @@ package com.ceiba.reserva.modelo.entidad;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,7 +11,6 @@ import static com.ceiba.dominio.ValidadorArgumento.*;
 
 @Getter
 @Setter
-@ToString
 public class Reserva {
 
     private static final String SE_DEBE_INGRESAR_EL_ID_DE_LA_HABITACION = "Se debe ingresar el id de la habitacion";

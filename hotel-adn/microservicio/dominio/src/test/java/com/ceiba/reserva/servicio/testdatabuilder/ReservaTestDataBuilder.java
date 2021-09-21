@@ -24,7 +24,6 @@ public class ReservaTestDataBuilder {
         tipoHabitacion = "individual";
         tipoParqueadero = "moto";
         fechaReserva = LocalDateTime.now();
-        fechaSalida = LocalDate.of(2021,9,20);
 
     }
 
@@ -61,5 +60,11 @@ public class ReservaTestDataBuilder {
         return new Reserva(null,idHabitacion, tipoHabitacion, idParqueadero, tipoParqueadero,
                 idUsuario, fechaReserva, fechaIngreso,
                 fechaSalida, precioTotal, checkIn, checkOut) ;
+    }
+
+    public Reserva buildInicial() {
+        return new Reserva(null, tipoHabitacion, tipoParqueadero,
+                idUsuario, fechaIngreso,
+                fechaSalida) ;
     }
 }

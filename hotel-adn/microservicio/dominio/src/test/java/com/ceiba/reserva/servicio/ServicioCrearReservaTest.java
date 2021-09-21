@@ -34,7 +34,8 @@ public class ServicioCrearReservaTest {
     public void validarExistenciaPreviaTest() {
         // arrange
         Reserva reserva = new ReservaTestDataBuilder()
-                .conFechaIngreso(LocalDate.now().plusDays(1l)).build();
+                .conFechaIngreso(LocalDate.now().plusDays(1l))
+                .conFechaSalida(LocalDate.now().plusDays(5l)).buildInicial();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
@@ -54,7 +55,8 @@ public class ServicioCrearReservaTest {
     public void validarTiempoMinimoReservaTest() {
 
         Reserva reserva = new ReservaTestDataBuilder()
-                .conFechaIngreso(LocalDate.now().minusDays(1l)).build();
+                .conFechaIngreso(LocalDate.now().minusDays(1l)).conFechaSalida(LocalDate.now().plusDays(5l))
+                .buildInicial();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
@@ -74,7 +76,8 @@ public class ServicioCrearReservaTest {
     public void validarExistenciaUsuarioTest() {
 
         Reserva reserva = new ReservaTestDataBuilder().conUsuario(50L)
-                .conFechaIngreso(LocalDate.now().plusDays(1l)).build();
+                .conFechaIngreso(LocalDate.now().plusDays(1l))
+                .conFechaSalida(LocalDate.now().plusDays(5l)).buildInicial();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
@@ -96,7 +99,8 @@ public class ServicioCrearReservaTest {
 
         Reserva reserva = new ReservaTestDataBuilder().conUsuario(1L)
                 .conFechaIngreso(LocalDate.now().plusDays(1l))
-                .build();
+                .conFechaSalida(LocalDate.now().plusDays(5l))
+                .buildInicial();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
@@ -137,7 +141,7 @@ public class ServicioCrearReservaTest {
     public void obtenerPrecioTotalTest() {
         Reserva reserva = new ReservaTestDataBuilder().conUsuario(1L)
                 .conFechaIngreso(LocalDate.now().plusDays(1l))
-                .conFechaSalida(LocalDate.now().plusDays(4l)).build();
+                .conFechaSalida(LocalDate.now().plusDays(4l)).buildInicial();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
@@ -179,7 +183,7 @@ public class ServicioCrearReservaTest {
     public void obtenerParqueaderoDisponibleTest() {
 
         Reserva reserva = new ReservaTestDataBuilder().conUsuario(1L)
-                .conFechaIngreso(LocalDate.now().plusDays(1l)).build();
+                .conFechaIngreso(LocalDate.now().plusDays(1l)).conFechaSalida(LocalDate.now().plusDays(5l)).buildInicial();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
         RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
         RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
