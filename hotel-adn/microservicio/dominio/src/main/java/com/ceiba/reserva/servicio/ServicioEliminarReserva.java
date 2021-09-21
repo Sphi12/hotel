@@ -1,5 +1,6 @@
 package com.ceiba.reserva.servicio;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 
 public class ServicioEliminarReserva {
@@ -14,6 +15,7 @@ public class ServicioEliminarReserva {
     public void ejecutar(Long id) {
         validarExistenciaPrevia(id);
         this.repositorioReserva.eliminarReserva(id);
+
     }
 
     private void validarExistenciaPrevia(Long id) {

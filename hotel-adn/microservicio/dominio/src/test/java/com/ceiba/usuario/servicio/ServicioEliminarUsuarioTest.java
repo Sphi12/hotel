@@ -21,4 +21,14 @@ public class ServicioEliminarUsuarioTest {
         BasePrueba.assertThrows(() -> servicioEliminarUsuario.ejecutar(usuario.getId()),
                 ExcepcionSinDatos.class,"El usuario no existe en el sistema");
     }
+
+    @Test
+    public void validarUsuarioExistenciaPreviaTest() {
+        // arrange
+        Usuario usuario = new UsuarioTestDataBuilder().conId(1L).build();
+        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
+        Mockito.when(repositorioUsuario.existeUsuario(Mockito.anyLong())).thenReturn(true);
+        ServicioEliminarUsuario servicioEliminarUsuario = new ServicioEliminarUsuario(repositorioUsuario);
+        servicioEliminarUsuario.ejecutar(usuario.getId());
+    }
 }

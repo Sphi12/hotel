@@ -86,13 +86,9 @@ public class RepositorioHabitacionMysql implements RepositorioHabitacion {
 
     @Override
     public Long obtenerHabitacionDisponibleHabitacion(String tipo) {
-        try {
             MapSqlParameterSource paramSource = new MapSqlParameterSource();
             paramSource.addValue("nombre", tipo);
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHabitacionDisponibleHabitacion, paramSource, Long.class);
-        }catch(EmptyResultDataAccessException em){
-            return null;
-        }
     }
 
     @Override

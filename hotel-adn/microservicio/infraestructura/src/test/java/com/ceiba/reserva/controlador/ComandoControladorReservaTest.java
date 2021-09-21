@@ -1,7 +1,6 @@
 package com.ceiba.reserva.controlador;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -94,12 +93,6 @@ public class ComandoControladorReservaTest {
         mocMvc.perform(delete("/reservas/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andDo(
-                        resultValorar -> {
-                            DtoReserva updateReservaResponse = daoReserva.obtener(id);
-                            assertNull(updateReservaResponse);
-                        }
-                );
+                .andExpect(status().isOk());
     }
 }
