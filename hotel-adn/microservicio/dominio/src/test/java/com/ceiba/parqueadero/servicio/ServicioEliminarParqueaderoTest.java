@@ -21,4 +21,15 @@ public class ServicioEliminarParqueaderoTest {
         BasePrueba.assertThrows(() -> servicioEliminarParqueadero.ejecutar(parqueadero.getId()),
                 ExcepcionSinDatos.class, "El parqueadero no existe en el sistema");
     }
+
+    @Test
+    public void validarExistenciaPreviaTest() {
+
+        Parqueadero parqueadero = new ParqueaderoTestDataBuilder().build();
+        // arrange
+        RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
+        Mockito.when(repositorioParqueadero.existeParqueadero(Mockito.anyLong())).thenReturn(true);
+        ServicioEliminarParqueadero servicioEliminarParqueadero = new ServicioEliminarParqueadero(repositorioParqueadero);
+        servicioEliminarParqueadero.ejecutar(parqueadero.getId());
+    }
 }

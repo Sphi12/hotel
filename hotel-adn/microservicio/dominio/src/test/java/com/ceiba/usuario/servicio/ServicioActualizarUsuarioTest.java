@@ -13,7 +13,7 @@ import com.ceiba.BasePrueba;
 public class ServicioActualizarUsuarioTest {
 
     @Test
-    public void validarUsuarioExistenciaPreviaTest() {
+    public void validarUsuarioNoExistenciaPreviaTest() {
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder().conId(1L).build();
         RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
@@ -21,5 +21,15 @@ public class ServicioActualizarUsuarioTest {
         ServicioActualizarUsuario servicioActualizarUsuario = new ServicioActualizarUsuario(repositorioUsuario);
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionSinDatos.class,"El usuario no existe en el sistema");
+    }
+
+    @Test
+    public void validarUsuarioExistenciaPreviaTest() {
+        // arrange
+        Usuario usuario = new UsuarioTestDataBuilder().conId(1L).build();
+        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
+        Mockito.when(repositorioUsuario.existeUsuario(Mockito.anyLong())).thenReturn(true);
+        ServicioActualizarUsuario servicioActualizarUsuario = new ServicioActualizarUsuario(repositorioUsuario);
+        servicioActualizarUsuario.ejecutar(usuario);
     }
 }

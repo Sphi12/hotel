@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 public class ServicioActualizarTipoParqueaderoTest {
 
     @Test
-    public void validarExistenciaPreviaTest() {
+    public void validarNoExistenciaPreviaTest() {
         TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
         // arrange
         RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
@@ -20,6 +20,16 @@ public class ServicioActualizarTipoParqueaderoTest {
         ServicioActualizarTipoParqueadero servicioActualizarTipoParqueadero = new ServicioActualizarTipoParqueadero(repositorioTipoParqueadero);
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarTipoParqueadero.ejecutar(tipoParqueadero), ExcepcionDuplicidad.class, "El tipo parqueadero no existe en el sistema");
+    }
+
+    @Test
+    public void validarExistenciaPreviaTest() {
+        TipoParqueadero tipoParqueadero = new TipoParqueaderoTestDataBuilder().build();
+        // arrange
+        RepositorioTipoParqueadero repositorioTipoParqueadero = Mockito.mock(RepositorioTipoParqueadero.class);
+        Mockito.when(repositorioTipoParqueadero.existeTParqueadero(Mockito.anyLong())).thenReturn(true);
+        ServicioActualizarTipoParqueadero servicioActualizarTipoParqueadero = new ServicioActualizarTipoParqueadero(repositorioTipoParqueadero);
+        servicioActualizarTipoParqueadero.ejecutar(tipoParqueadero);
     }
 
 }

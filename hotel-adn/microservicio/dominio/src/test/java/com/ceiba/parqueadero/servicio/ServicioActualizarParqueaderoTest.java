@@ -22,4 +22,15 @@ public class ServicioActualizarParqueaderoTest {
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarParqueadero.ejecutar(parqueadero), ExcepcionSinDatos.class, "El parqueadero no existe en el sistema");
     }
+
+    @Test
+    public void actualizarParqueaderoTest() {
+
+        Parqueadero parqueadero = new ParqueaderoTestDataBuilder().build();
+        // arrange
+        RepositorioParqueadero repositorioParqueadero = Mockito.mock(RepositorioParqueadero.class);
+        Mockito.when(repositorioParqueadero.existeParqueadero(Mockito.anyLong())).thenReturn(true);
+        ServicioActualizarParqueadero servicioActualizarParqueadero = new ServicioActualizarParqueadero(repositorioParqueadero);
+        servicioActualizarParqueadero.ejecutar(parqueadero);
+    }
 }

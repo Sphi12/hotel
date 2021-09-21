@@ -20,4 +20,16 @@ public class ServicioActualizarHabitacionTest {
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarHabitacion.ejecutar(habitacion), ExcepcionSinDatos.class, "La habitacion no existe");
     }
+
+    @Test
+    public void actualizarTest() {
+
+        Habitacion habitacion = new HabitacionroTestDataBuilder().build();
+        // arrange
+        RepositorioHabitacion repositorioHabitacion = Mockito.mock(RepositorioHabitacion.class);
+        Mockito.when(repositorioHabitacion.existeHabitacion(Mockito.anyLong())).thenReturn(true);
+        ServicioActualizarHabitacion servicioActualizarHabitacion = new ServicioActualizarHabitacion(repositorioHabitacion);
+        // act - assert
+        servicioActualizarHabitacion.ejecutar(habitacion);
+    }
 }

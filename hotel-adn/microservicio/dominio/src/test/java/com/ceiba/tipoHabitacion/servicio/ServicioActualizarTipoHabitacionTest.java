@@ -22,4 +22,15 @@ public class ServicioActualizarTipoHabitacionTest {
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarTipoHabitacion.ejecutar(tipoHabitacion), ExcepcionSinDatos.class, "El tipo de habitacion no existe en el sistema");
     }
+
+    @Test
+    public void actualizarTipoHabPreviaTest() {
+
+        TipoHabitacion tipoHabitacion = new TipoHabitacionTestDataBuilder().build();
+        // arrange
+        RepositorioTipoHabitacion repositorioTipoHabitacion = Mockito.mock(RepositorioTipoHabitacion.class);
+        Mockito.when(repositorioTipoHabitacion.existeTHabitacion(Mockito.anyLong())).thenReturn(true);
+        ServicioActualizarTipoHabitacion servicioActualizarTipoHabitacion = new ServicioActualizarTipoHabitacion(repositorioTipoHabitacion);
+        servicioActualizarTipoHabitacion.ejecutar(tipoHabitacion);
+    }
 }
